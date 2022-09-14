@@ -635,26 +635,26 @@ function WealthMountain() {
                     { activeTab == 0 && 
                         <Container>
                             <CardDeck>
-                                <Card body className="text-center text-lightblue">
-                                    <h5 className="calvino text-lightblue">TVL</h5>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">TVL</h6>
                                     <h5 className="source font-weight-bold text-white">
                                         {Number(contractBalance) === 0 ? <>?</> : <>${Number(contractBalance).toFixed(0)}</>}
                                     </h5>
                                 </Card>
-                                <Card body className="text-center text-lightblue">
-                                    <h5 className="calvino text-lightblue">USERS</h5>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">USERS</h6>
                                     <h5 className="source font-weight-bold text-white">
                                         {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
                                     </h5>
                                 </Card>
-                                <Card body className="text-center text-lightblue">
-                                    <h5 className="calvino text-lightblue">Daily Earnings</h5>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">Daily Earnings</h6>
                                     <h5 className="source font-weight-bold text-white">
                                         $1,059
                                     </h5>
                                 </Card>
-                                <Card body className="text-center text-lightblue">
-                                    <h5 className="calvino text-lightblue">Referral rewards</h5>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">Referral rewards</h6>
                                     <h5 className="source font-weight-bold text-white">
                                         0
                                     </h5>
@@ -665,20 +665,26 @@ function WealthMountain() {
                     { activeTab == 1 && 
                         <Container>
                             <CardDeck>
-                                <Card body className="text-center text-lightblue">
-                                    <h5 className="calvino text-lightblue">Stake Value</h5>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">Stake Value</h6>
                                     <h5 className="source font-weight-bold text-white">
                                         {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
                                     </h5>
                                 </Card>
-                                <Card body className="text-center text-lightblue">
-                                    <h5 className="calvino text-lightblue">Daily Earnings</h5>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">Daily Earnings</h6>
                                     <h5 className="source font-weight-bold text-white">
                                         700
                                     </h5>
                                 </Card>
-                                <Card body className="text-center text-lightblue">
-                                    <h5 className="calvino text-lightblue">Total Rewards</h5>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">Total Rewards</h6>
+                                    <h5 className="source font-weight-bold text-white">
+                                        $1,059
+                                    </h5>
+                                </Card>
+                                <Card body className="text-center text-lightblue box-shadow">
+                                    <h6 className="calvino text-lightblue">Referral Rewards</h6>
                                     <h5 className="source font-weight-bold text-white">
                                         $1,059
                                     </h5>
@@ -780,8 +786,8 @@ function WealthMountain() {
                     <TabPanel value={activeTab} selectedIndex={1}>
                         <CardDeck className="p-3">
                             <Card body className="text-center text-lightblue">
-                                <h4 className="calvino text-lightblue">ENTER STAKE</h4>
-                                <p className="source text-center">Approve and stake your BUSD here.</p>
+                                <h4 className="calvino text-lightblue">Enter Stake</h4>
+                                <p className="source text-center" style={{fontSize:'14px'}}>Approve and stake your BUSD here.</p>
                                 <small className="source text-lightblue text-right">Balance: <span className="text-white font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
                                 <Form>
                                     <FormGroup>
@@ -789,15 +795,15 @@ function WealthMountain() {
                                         <InputGroup>
                                             <Input
                                                 className="custom-input text-center source"
-                                                placeholder="MINIMUM 50 BUSD"
+                                                placeholder="minimum of 50"
                                                 onChange={updateStakingAmount}
                                             ></Input>
                                         </InputGroup>
-                                        <Button onClick={approveButton} className="custom-button mt-4 source font-weight-bold">APPROVE</Button>
-                                        <Button onClick={stakeAmount} className="custom-button mt-4 source font-weight-bold">STAKE</Button>
+                                        <Button onClick={approveButton} className="custom-button mt-4 source font-weight-bold">Approve</Button>
+                                        <Button onClick={stakeAmount} className="custom-button mt-4 source font-weight-bold">Stake</Button>
                                     </FormGroup>
                                 </Form>
-                                <small className="source text-lightblue">Note: Stakes are not locked. You can unstake at any time.</small><br />
+                                <small className="source text-lightblue">Note: Stakes are not locked. You can <br /> unstake at any time.</small><br />
                                 {/* <small className="source text-lightblue text-left"><FaWallet size="1.7em" className="pr-2" />Your wallet: <span className="text-white font-weight-bold">{userStablecoinBalance.toFixed(2)} BUSD</span></small> */}
                                 <small className="source text-lightblue text-left"><FaUserShield size="1.7em" className="pr-2" />Approved amount: <span className="text-white font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
                                 {/* <a className="source text-left text-underline text-lightblue" href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer"><small className="source text-lightblue text-left"><FaSearchDollar size="1.7em" className="pr-2" />Swap your tokens for BUSD here. </small></a> */}
@@ -813,9 +819,9 @@ function WealthMountain() {
                                 </small>
                             </Card> */}
                             <Card data-aos="fade-right" data-aos-duration="800" className="p-3 text-center">
-                                <h3 className="calvino text-lightblue">Rewards Tier</h3>
+                                <h4 className="calvino text-lightblue">Rewards Tier</h4>
 
-                                <table className="source" border="2">
+                                <table className="source" border="2" style={{fontSize:'14px', borderColor:'#313131'}}>
                                 <tbody>
                                     <tr>
                                     <td className="font-weight-bold">Tier</td>
@@ -1072,63 +1078,63 @@ function WealthMountain() {
                     </TabPanel>
 
                     { activeTab == 1 &&
-                    <Container className="pt-3">
-                        <Card body>
-                            <h2 className="calvino text-center text-lightblue">Earnings Calculator</h2>
-                            <CardDeck>
-                                <Card body className="text-center">
-                                    {/* <h3 className="calvino font-weight-bold text-lightblue">STAKING</h3> */}
-                                    <Form>
-                                        <FormGroup>
-                                            <Label className="source font-weight-bold text-lightblue">Stake Amount</Label>
-                                            <InputGroup>
-                                                <Input
-                                                    className="custom-input text-center source"
-                                                    placeholder="MINIMUM 50 BUSD"
-                                                    // onChange={(e) => this.setCalcAmount(`${e.target.value}`)}
-                                                    onChange={updateCalc}
-                                                ></Input>
-                                            </InputGroup>
-                                        </FormGroup>
-                                    </Form>
-                                    <Label className="source font-weight-bold text-lightblue">Days Staked</Label>
-                                    <Col className="text-center">
-                                        <Box>
-                                            <Slider
-                                                defaultValue={50}
-                                                aria-label="Default"
-                                                valueLabelDisplay="auto"
-                                                color='primary'
-                                                onChange={(_, v) => calculate(v)} />
-                                        </Box>
-                                    </Col>
-                                </Card>
-                                <Card body className="text-center">
-                                    {/* <h3 className="calvino font-weight-bold text-lightblue">EARNINGS</h3> */}
-                                    <CardDeck>
-                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                            <h3 className="calvino text-white">${calcTotalDividends}</h3>
-                                            <small className="source text-white">Total rewards earned</small>
-                                        </Card>
-                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                            <h3 className="calvino text-white">${initalStakeAfterFees}</h3>
-                                            <small className="source text-white">Initial stake after fees</small>
-                                        </Card>
-                                    </CardDeck>
-                                    <CardDeck className="pt-3">
-                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                            <h3 className="calvino text-white">{dailyPercent}%</h3>
-                                            <small className="source text-white">Earning daily (%)</small>
-                                        </Card>
-                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                            <h3 className="calvino text-white">${dailyValue}</h3>
-                                            <small className="source text-white">Earning daily ($)</small>
-                                        </Card>
-                                    </CardDeck>
-                                </Card>
-                            </CardDeck>
-                        </Card>
-                    </Container>
+                        <Container className="pt-3">
+                            <Card body>
+                                <h4 className="calvino text-center text-lightblue">Earnings Calculator</h4>
+                                <CardDeck>
+                                    <Card body className="text-center">
+                                        {/* <h3 className="calvino font-weight-bold text-lightblue">STAKING</h3> */}
+                                        <Label className="source font-weight-bold text-lightblue text-left">Stake Amount</Label>
+                                        <Form>
+                                            <FormGroup>
+                                                <InputGroup>
+                                                    <Input
+                                                        className="custom-input text-center source"
+                                                        placeholder="minimum of 50"
+                                                        // onChange={(e) => this.setCalcAmount(`${e.target.value}`)}
+                                                        onChange={updateCalc}
+                                                    ></Input>
+                                                </InputGroup>
+                                            </FormGroup>
+                                        </Form>
+                                        <Label className="source font-weight-bold text-lightblue text-left">Days Staked</Label>
+                                        <Col className="text-center">
+                                            <Box>
+                                                <Slider
+                                                    defaultValue={50}
+                                                    aria-label="Default"
+                                                    valueLabelDisplay="auto"
+                                                    color='primary'
+                                                    onChange={(_, v) => calculate(v)} />
+                                            </Box>
+                                        </Col>
+                                    </Card>
+                                    <Card body className="text-center">
+                                        {/* <h3 className="calvino font-weight-bold text-lightblue">EARNINGS</h3> */}
+                                        <CardDeck>
+                                            <Card style={{ boxShadow: '0 -1px 2px #9568E1', padding:'10px' }}>
+                                                <h6 className="calvino text-white">${calcTotalDividends}</h6>
+                                                <small className="source text-white">Total rewards earned</small>
+                                            </Card>
+                                            <Card style={{ boxShadow: '0 -1px 2px #9568E1', padding:'10px' }}>
+                                                <h6 className="calvino text-white">${initalStakeAfterFees}</h6>
+                                                <small className="source text-white">Initial stake after fees</small>
+                                            </Card>
+                                        </CardDeck>
+                                        <CardDeck className="pt-3">
+                                            <Card style={{ boxShadow: '0 -1px 2px #9568E1', padding:'10px' }}>
+                                                <h6 className="calvino text-white">{dailyPercent}%</h6>
+                                                <small className="source text-white">Earning daily (%)</small>
+                                            </Card>
+                                            <Card style={{ boxShadow: '0 -1px 2px #9568E1', padding:'10px' }}>
+                                                <h6 className="calvino text-white">${dailyValue}</h6>
+                                                <small className="source text-white">Earning daily ($)</small>
+                                            </Card>
+                                        </CardDeck>
+                                    </Card>
+                                </CardDeck>
+                            </Card>
+                        </Container>
                     }
                     {/* <Container className="pt-5 text-center calvino text-lightblue">
                         <Card body className="mb-3 p-1">

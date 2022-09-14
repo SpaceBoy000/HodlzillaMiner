@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
 .App {
   text-align: center;
 }
@@ -95,7 +97,7 @@ hr.rounded {
   border-radius:10px;
 }
 .calvino {
-  font-family:Open Sans;
+  font-family: Poppins;
 }
 
 .libertine {
@@ -103,7 +105,7 @@ hr.rounded {
 }
 
 .source {
-  font-family:Open Sans;
+  font-family: Poppins;
 }
 
 .source-bold {
@@ -198,7 +200,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -604,16 +606,16 @@ pre {
   margin-left: auto; }
   @media (min-width: 576px) {
     .container {
-      max-width: 540px; } }
+      max-width: 530px; } }
   @media (min-width: 768px) {
     .container {
-      max-width: 720px; } }
+      max-width: 730px; } }
   @media (min-width: 992px) {
     .container {
-      max-width: 960px; } }
+      max-width: 970px; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1040px; } }
+      max-width: 1080px; } }
 
 .container-fluid {
   width: 100%;
@@ -17180,7 +17182,7 @@ td.rdtYear:hover {
 .custom-button {
   background: linear-gradient(249.51deg, #00FFA3 -6.39%, #2B56EF 181.32%);
   mix-blend-mode: normal;
-  border-radius: 12px;
+  border-radius: 8px;
   mix-blend-mode: normal;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
@@ -17191,7 +17193,7 @@ td.rdtYear:hover {
 
 .card {
   color: white;
-  background: #0E1716;
+  background: #15151B;
   border-radius: 15px;
   /* display: flex;
   flex-direction: row; */
@@ -17256,6 +17258,11 @@ td.rdtYear:hover {
 
 .content {
   padding-left: 250px;
+  padding-top: 100px;
+}
+
+.box-shadow {
+  box-shadow: 0 -1px 2px #21FFA2; 
 }
 
 @media (max-width: 576px) {
@@ -17288,17 +17295,17 @@ td.rdtYear:hover {
 }
 
 .custom-input {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  background: black;
+  border-radius: 8px;
   border: none;
-  color: white;
+  color: #2E2E2E;
 }
 
 .custom-input:focus {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  background: black;
+  border-radius: 8px;
   border: none;
-  color: white;
+  color: #2E2E2E;
 }
 
 .custom-footer {
