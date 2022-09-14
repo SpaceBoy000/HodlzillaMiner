@@ -14,7 +14,10 @@ import styled from "styled-components";
 import { Tabs, Tab, TabPanel } from "./components/tabs/tabs";
 import { FaCopy, FaWallet, FaUserShield, FaSearchDollar } from 'react-icons/fa';
 
-import logoImg from "./assets/img/logos/logo.svg";
+import logoImg from "./assets/img/logos/logo.png";
+import vectorImg from "./assets/img/Vector.png";
+import minerImg from "./assets/img/miner.png";
+import groupImg from "./assets/img/group.png";
 import lotteryBanner from "./assets/lottery_banner.gif";
 
 import {
@@ -203,6 +206,18 @@ function WealthMountain() {
         };
         init();
     }, []);
+
+    const onHandleDashboard = () => {
+        setActiveTab(0);
+    }
+    
+    const onHandleMiner = () => {
+        setActiveTab(1);
+    }
+    
+    const onGroup = () => {
+        // setActiveTab(2);
+    }
 
     const handleChange = (e, value) => {
         setActiveTab(value);
@@ -503,7 +518,7 @@ function WealthMountain() {
         if (userInfo.length == 0) {
             return (
                 <>
-                    <Button outline className="custom-button mt-3 source" onClick={() => { setActiveTab(1) }}>Start a stake to see your info</Button>
+                    <Button outline className="custom-button mt-3 source" onClick={() => { setActiveTab(1) }}>Start a Stake</Button>
                 </>
             )
         }
@@ -554,23 +569,33 @@ function WealthMountain() {
 
     return (
         <>
-            <Container className="custom-header">
-                <Card className="px-5 py-2">
+            <Card className="custom-header" style={{display: 'flex', flexDirection:'row'}}>
+                <div className="px-2 py-2">
                     <img
                         alt="..."
                         src={logoImg}
-                        style={{ width: 'auto', height: '36px' }}
+                        style={{ width: 'auto', height: '20px' }}
                     />
-                </Card>
-                
+                </div>
+                <div style={{display:'flex'}}>
+                    <Typography className='hd-title'>
+                        $BUSD MINER
+                    </Typography>
+                    <Typography className='hd-title'>
+                        $BNB MINER
+                    </Typography>
+                    <Typography className='hd-title'>
+                        $HODLZILLA MINER
+                    </Typography>
+                </div>
                 <Button
                     className='custom-button'
-                    style={{maxHeight: "43px"}}
+                    style={{maxHeight: "43px", maxWidth: '230px'}}
                     onClick={requestAccount}>
                     {connectButtonText}
                 </Button>
-            </Container>
-            <Container>
+            </Card>
+            {/* <Container>
                 <Button
                     style={{background: 'transparent', border: 'none'}} 
                     onClick={()=>setActiveTab(2)}>
@@ -580,7 +605,7 @@ function WealthMountain() {
                         style={{ width: '100%', marginTop: '10px', border: '1px solid rgb(66 45 14)', borderRadius: '10px'}}
                     />
                 </Button>
-            </Container>
+            </Container> */}
             {/* <Container>
                 {countdown.alive && 
                     <>
@@ -591,173 +616,209 @@ function WealthMountain() {
                     </>
                 }
             </Container> */}
-            <Container className="pt-3">
-                <Container>
-                    <CardDeck>
-                        <Card body className="text-center text-lightblue">
-                            <h5 className="calvino text-lightblue">TVL</h5>
-                            <h5 className="source font-weight-bold text-white">
-                                {Number(contractBalance) === 0 ? <>?</> : <>${Number(contractBalance).toFixed(0)}</>}
-                            </h5>
-                        </Card>
-                        <Card body className="text-center text-lightblue">
-                            <h5 className="calvino text-lightblue">USERS</h5>
-                            <h5 className="source font-weight-bold text-white">
-                                {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
-                            </h5>
-                        </Card>
-                        <Card body className="text-center text-lightblue">
-                            <h5 className="calvino text-lightblue">STAKE FEE</h5>
-                            <h5 className="source font-weight-bold text-white">
-                                10%
-                            </h5>
-                        </Card>
-                        <Card body className="text-center text-lightblue">
-                            <h5 className="calvino text-lightblue">COLLECTION FEE</h5>
-                            <h5 className="source font-weight-bold text-white">
-                                10%
-                            </h5>
-                        </Card>
-                    </CardDeck>
-                </Container>
-                <TabsContainer className="pt-3">
-                    <Tabs selectedTab={activeTab} onChange={handleChange}>
-                        <Tab label="CURRENT STAKES & YIELD" value={0}></Tab>
-                        <Tab label="ENTER STAKE" value={1}></Tab>
-                        <Tab label="LOTTERY" value={2}></Tab>
-                    </Tabs>
-                </TabsContainer>
-
-                <TabPanel value={activeTab} selectedIndex={0}>
-                    <Row>
-                        <Col></Col>
-                        <Col className="text-center">
-                        </Col>
-                        <Col></Col>
-                    </Row>
-                    <CardDeck className="p-3">
-                        <Card body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue">TOTAL STAKED VALUE</h4>
-                            <h1 className="source font-weight-bold text-white">$<TotalStakedValue /></h1>
-                            <UnstakeOptions />
-                        </Card>
-                        <Card body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue">TOTAL EARNINGS</h4>
+            <div className="main_content">
+                <div className="menu">
+                    <div className="menu-item">
+                        <img src={vectorImg}/>
+                        <Typography className="menu-item-text" onClick={onHandleDashboard}>Dashboard</Typography>
+                    </div>
+                    <div className="menu-item">
+                        <img src={minerImg}/>
+                        <Typography className="menu-item-text" onClick={onHandleMiner}>Miner</Typography>
+                    </div>
+                    <div className="menu-item">
+                        <img src={groupImg}/>
+                        <Typography className="menu-item-text" onClick={onGroup}>Invite & Earn</Typography>
+                    </div>
+                </div>
+                <Container className="pt-3 content">
+                    { activeTab == 0 && 
+                        <Container>
                             <CardDeck>
-                                <Card style={{background: "transparent"}}>
-                                    <h4 className="source font-weight-bold text-white"><TotalEarnedPercent /></h4>
+                                <Card body className="text-center text-lightblue">
+                                    <h5 className="calvino text-lightblue">TVL</h5>
+                                    <h5 className="source font-weight-bold text-white">
+                                        {Number(contractBalance) === 0 ? <>?</> : <>${Number(contractBalance).toFixed(0)}</>}
+                                    </h5>
                                 </Card>
-                                <Card style={{background: "transparent"}}>
-                                    <h4 className="source font-weight-bold text-white">$<TotalEarnedValue /></h4>
+                                <Card body className="text-center text-lightblue">
+                                    <h5 className="calvino text-lightblue">USERS</h5>
+                                    <h5 className="source font-weight-bold text-white">
+                                        {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
+                                    </h5>
+                                </Card>
+                                <Card body className="text-center text-lightblue">
+                                    <h5 className="calvino text-lightblue">Daily Earnings</h5>
+                                    <h5 className="source font-weight-bold text-white">
+                                        $1,059
+                                    </h5>
+                                </Card>
+                                <Card body className="text-center text-lightblue">
+                                    <h5 className="calvino text-lightblue">Referral rewards</h5>
+                                    <h5 className="source font-weight-bold text-white">
+                                        0
+                                    </h5>
                                 </Card>
                             </CardDeck>
-                            <Row>
-                                <Col>
-                                    <Button className="custom-button source mt-3" outline onClick={compound}>compound</Button>
-                                    <Button className="custom-button source mt-3" outline onClick={withdrawDivs}>collect</Button>
-                                </Col>
-                            </Row>
-                            <small className="pt-2 source">Note: Collecting will reset all stakes to 1.5% daily. Compound will add to your stakes while doing the same.</small>
-                        </Card>
-                    </CardDeck>
-                    <CardDeck className="pl-3 pr-3 pb-3">
-                        <Card body className="text-center text-lightblue">
-                            <h5 className="calvino text-lightblue">REFERRALS EARNED</h5>
-                            {refBonusLoading ? <></> :
-                                <>
-                                    <h4 className="source font-weight-bold text-white">${referralAccrued}</h4>
-                                    <Row>
-                                        <Col>
-                                            <Button className="custom-button source mt-2" outline onClick={stakeRefBonus}>STAKE</Button>
-                                            <Button className="custom-button source mt-2" outline onClick={withdrawRefBonus}>COLLECT</Button>
-                                        </Col>
-                                    </Row>
-                                </>}
-
-                        </Card>
-                        <Card body className="text-center text-lightblue">
-                            <h5 className="calvino text-lightblue">REFERRAL LINK</h5>
-                            <h3 type="button" onClick={() => navigator.clipboard.writeText("https://busdautomine.org?ref=" + userWalletAddress)} className="referralButton source font-weight-bold"><FaCopy size="1.6em" className="pr-3" />COPY LINK</h3>
-                            <small className="source text-lightblue">Earn 10% when someone uses your referral link.</small>
-                        </Card>
-                    </CardDeck>
-                    <CardDeck className="pt-2 pr-3 pl-3 pb-3">
-                        <Card body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue" style={{ lineHeight: "10px" }}>CURRENT STAKES</h4>
-                            <small className="pt-0 pb-4 source">Here's a list of all of your current stakes.</small>
-                            <ListOfUserStakes />
-                        </Card>
-                        <Card hidden body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue">Days Staked</h4>
-                            <h3 className="source font-weight-bold text-white">2 days</h3>
-                        </Card>
-                        <Card hidden body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue">Time to Max</h4>
+                        </Container>
+                    }
+                    { activeTab == 1 && 
+                        <Container>
                             <CardDeck>
-                                <Card>
-                                    <h4 className="source font-weight-bold text-white">?</h4>
-                                    <small className="source">days until max</small>
+                                <Card body className="text-center text-lightblue">
+                                    <h5 className="calvino text-lightblue">Stake Value</h5>
+                                    <h5 className="source font-weight-bold text-white">
+                                        {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
+                                    </h5>
                                 </Card>
-                                <Card>
-                                    <h4 className="source font-weight-bold text-white">$</h4>
-                                    <small className="source">max per day</small>
+                                <Card body className="text-center text-lightblue">
+                                    <h5 className="calvino text-lightblue">Daily Earnings</h5>
+                                    <h5 className="source font-weight-bold text-white">
+                                        700
+                                    </h5>
+                                </Card>
+                                <Card body className="text-center text-lightblue">
+                                    <h5 className="calvino text-lightblue">Total Rewards</h5>
+                                    <h5 className="source font-weight-bold text-white">
+                                        $1,059
+                                    </h5>
                                 </Card>
                             </CardDeck>
-                        </Card>
-                        <Card hidden body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue">Current Unstake Fee</h4>
-                            <h3 className="source font-weight-bold text-white">20%</h3>
-                            <small className="source text-lightblue">days until decrease to 12%</small>
-                        </Card>
-                    </CardDeck>
-                </TabPanel>
-                <TabPanel value={activeTab} selectedIndex={1}>
-                    <CardDeck className="p-3">
-                        <Card body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue">ENTER STAKE</h4>
-                            <p className="source text-center">Approve and stake your BUSD here. You can view your ongoing stakes in the <span className="font-weight-bold">Current Stakes & Yield</span> tab.</p>
-                            <Form>
-                                <FormGroup>
-                                    <Label className="source font-weight-bold text-lightblue">STAKE AMOUNT</Label>
-                                    <InputGroup>
-                                        <Input
-                                            className="custom-input text-center source"
-                                            placeholder="MINIMUM 50 BUSD"
-                                            onChange={updateStakingAmount}
-                                        ></Input>
-                                    </InputGroup>
-                                    <Button onClick={approveButton} className="custom-button mt-4 source font-weight-bold">APPROVE</Button>
-                                    <Button onClick={stakeAmount} className="custom-button mt-4 source font-weight-bold">STAKE</Button>
-                                </FormGroup>
-                            </Form>
-                            <small className="source text-lightblue">Note: Stakes are not locked. You can unstake at any time.</small><br />
-                            <small className="source text-lightblue text-left"><FaWallet size="1.7em" className="pr-2" />Your wallet: <span className="text-white font-weight-bold">{userStablecoinBalance.toFixed(2)} BUSD</span></small>
-                            <small className="source text-lightblue text-left"><FaUserShield size="1.7em" className="pr-2" />Approved amount: <span className="text-white font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
-                            <a className="source text-left text-underline text-lightblue" href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer"><small className="source text-lightblue text-left"><FaSearchDollar size="1.7em" className="pr-2" />Swap your tokens for BUSD here. </small></a>
-                        </Card>
-                        <Card body className="source text-center">
-                            <h4 className="calvino text-lightblue">IMPORTANT INFORMATION</h4>
-                            <p className="text-left"> <span className="font-weight-bold">Stake or unstake at any time. </span>When a new stake is made, overall yield accrual is set to 1.5% until day 20.</p>
-                            <p className="text-left"><span className="font-weight-bold">Approval is required </span>prior to staking your BUSD. The protocol will only request approval for the amount entered.</p>
-                            <p className="text-left"><span className="font-weight-bold">Staking fee is a flat 10%. </span>Use the Earnings Calculator to determine how much a stake will earn daily.</p>
-                            <small className="text-left">Disclaimer: Dividend payouts will take place at a flat rate. Payouts continue contingent on Smart Contract health and liquidity.</small>
-                            <small className="pt-3 text-center font-weight-bold">
-                                <Link className="text-lightblue" to="/faq">For further questions, please read our DOCS</Link>
-                            </small>
-                        </Card>
-                    </CardDeck>
+                        </Container>
+                    }
+                    {/* <TabsContainer className="pt-3">
+                        <Tabs selectedTab={activeTab} onChange={handleChange}>
+                            <Tab label="CURRENT STAKES & YIELD" value={0}></Tab>
+                            <Tab label="ENTER STAKE" value={1}></Tab>
+                            <Tab label="LOTTERY" value={2}></Tab>
+                        </Tabs>
+                    </TabsContainer> */}
 
-                    <Parallax strength={500}>
-                        <div>
-                        <Container className="pb-3 pt-3 calvino text-center">
-                            <CardDeck>
-                            <Card data-aos="fade-right" data-aos-duration="800" className="p-3">
-                                <h3>DIVIDENDS</h3>
+                    <TabPanel value={activeTab} selectedIndex={0}>
+                        <Row>
+                            <Col></Col>
+                            <Col className="text-center">
+                            </Col>
+                            <Col></Col>
+                        </Row>
+                        <CardDeck className="p-3">
+                            <Card body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue">Your Staked Value</h4>
+                                <h1 className="source font-weight-bold text-white">$<TotalStakedValue /></h1>
+                                <UnstakeOptions />
+                            </Card>
+                            <Card body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue">Total Rewards</h4>
+                                <CardDeck>
+                                    <Card style={{background: "transparent"}}>
+                                        <h4 className="source font-weight-bold text-white"><TotalEarnedPercent /></h4>
+                                    </Card>
+                                    <Card style={{background: "transparent"}}>
+                                        <h4 className="source font-weight-bold text-white">$<TotalEarnedValue /></h4>
+                                    </Card>
+                                </CardDeck>
+                                <Row>
+                                    <Col>
+                                        <Button className="custom-button source mt-3" outline onClick={compound}>compound</Button>
+                                        <Button className="custom-button source mt-3" outline onClick={withdrawDivs}>Withdraw</Button>
+                                    </Col>
+                                </Row>
+                                <small className="pt-2 source">Note: Collecting will reset all stakes to 1.5% daily. Compound will add to your stakes while doing the same.</small>
+                            </Card>
+                        </CardDeck>
+                        <CardDeck className="pl-3 pr-3 pb-3">
+                            <Card body className="text-center text-lightblue">
+                                <h5 className="calvino text-lightblue">REFERRALS EARNED</h5>
+                                {refBonusLoading ? <></> :
+                                    <>
+                                        <h4 className="source font-weight-bold text-white">${referralAccrued}</h4>
+                                        <Row>
+                                            <Col>
+                                                <Button className="custom-button source mt-2" outline onClick={stakeRefBonus}>STAKE</Button>
+                                                <Button className="custom-button source mt-2" outline onClick={withdrawRefBonus}>COLLECT</Button>
+                                            </Col>
+                                        </Row>
+                                    </>}
+
+                            </Card>
+                            <Card body className="text-center text-lightblue">
+                                <h5 className="calvino text-lightblue">REFERRAL LINK</h5>
+                                <h3 type="button" onClick={() => navigator.clipboard.writeText("https://busdautomine.org?ref=" + userWalletAddress)} className="referralButton source font-weight-bold"><FaCopy size="1.6em" className="pr-3" />COPY LINK</h3>
+                                <small className="source text-lightblue">Earn 10% when someone uses your referral link.</small>
+                            </Card>
+                        </CardDeck>
+                        <CardDeck className="pt-2 pr-3 pl-3 pb-3">
+                            {/* <Card body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue" style={{ lineHeight: "10px" }}>CURRENT STAKES</h4>
+                                <small className="pt-0 pb-4 source">Here's a list of all of your current stakes.</small>
+                                <ListOfUserStakes />
+                            </Card> */}
+                            <Card hidden body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue">Days Staked</h4>
+                                <h3 className="source font-weight-bold text-white">2 days</h3>
+                            </Card>
+                            <Card hidden body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue">Time to Max</h4>
+                                <CardDeck>
+                                    <Card>
+                                        <h4 className="source font-weight-bold text-white">?</h4>
+                                        <small className="source">days until max</small>
+                                    </Card>
+                                    <Card>
+                                        <h4 className="source font-weight-bold text-white">$</h4>
+                                        <small className="source">max per day</small>
+                                    </Card>
+                                </CardDeck>
+                            </Card>
+                            <Card hidden body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue">Current Unstake Fee</h4>
+                                <h3 className="source font-weight-bold text-white">20%</h3>
+                                <small className="source text-lightblue">days until decrease to 12%</small>
+                            </Card>
+                        </CardDeck>
+                    </TabPanel>
+                    <TabPanel value={activeTab} selectedIndex={1}>
+                        <CardDeck className="p-3">
+                            <Card body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue">ENTER STAKE</h4>
+                                <p className="source text-center">Approve and stake your BUSD here.</p>
+                                <small className="source text-lightblue text-right">Balance: <span className="text-white font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
+                                <Form>
+                                    <FormGroup>
+                                        {/* <Label className="source font-weight-bold text-lightblue">Balance:</Label> */}
+                                        <InputGroup>
+                                            <Input
+                                                className="custom-input text-center source"
+                                                placeholder="MINIMUM 50 BUSD"
+                                                onChange={updateStakingAmount}
+                                            ></Input>
+                                        </InputGroup>
+                                        <Button onClick={approveButton} className="custom-button mt-4 source font-weight-bold">APPROVE</Button>
+                                        <Button onClick={stakeAmount} className="custom-button mt-4 source font-weight-bold">STAKE</Button>
+                                    </FormGroup>
+                                </Form>
+                                <small className="source text-lightblue">Note: Stakes are not locked. You can unstake at any time.</small><br />
+                                {/* <small className="source text-lightblue text-left"><FaWallet size="1.7em" className="pr-2" />Your wallet: <span className="text-white font-weight-bold">{userStablecoinBalance.toFixed(2)} BUSD</span></small> */}
+                                <small className="source text-lightblue text-left"><FaUserShield size="1.7em" className="pr-2" />Approved amount: <span className="text-white font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
+                                {/* <a className="source text-left text-underline text-lightblue" href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer"><small className="source text-lightblue text-left"><FaSearchDollar size="1.7em" className="pr-2" />Swap your tokens for BUSD here. </small></a> */}
+                            </Card>
+                            {/* <Card body className="source text-center">
+                                <h4 className="calvino text-lightblue">IMPORTANT INFORMATION</h4>
+                                <p className="text-left"> <span className="font-weight-bold">Stake or unstake at any time. </span>When a new stake is made, overall yield accrual is set to 1.5% until day 20.</p>
+                                <p className="text-left"><span className="font-weight-bold">Approval is required </span>prior to staking your BUSD. The protocol will only request approval for the amount entered.</p>
+                                <p className="text-left"><span className="font-weight-bold">Staking fee is a flat 10%. </span>Use the Earnings Calculator to determine how much a stake will earn daily.</p>
+                                <small className="text-left">Disclaimer: Dividend payouts will take place at a flat rate. Payouts continue contingent on Smart Contract health and liquidity.</small>
+                                <small className="pt-3 text-center font-weight-bold">
+                                    <Link className="text-lightblue" to="/faq">For further questions, please read our DOCS</Link>
+                                </small>
+                            </Card> */}
+                            <Card data-aos="fade-right" data-aos-duration="800" className="p-3 text-center">
+                                <h3 className="calvino text-lightblue">Rewards Tier</h3>
 
                                 <table className="source" border="2">
                                 <tbody>
                                     <tr>
-                                    <td className="font-weight-bold">Level</td>
+                                    <td className="font-weight-bold">Tier</td>
                                     <td className="font-weight-bold">Stake Length</td>
                                     <td className="font-weight-bold">Earnings</td>
                                     </tr>
@@ -782,256 +843,307 @@ function WealthMountain() {
                                     <td>4.5% daily</td>
                                     </tr>
                                     <tr>
-                                    <td>♛ 5 </td>
+                                    {/* <td>♛ 5 </td> */}
+                                    <td>5 </td>
                                     <td>Day 50 - ∞</td>
                                     <td>5.5% daily</td>
                                     </tr>
                                 </tbody>
                                 </table>
                                 <br />
-                                <small className="source">Compounding and collecting earnings from dividends reset all stakes to level 1. Creating new stakes has no effect on existing stakes.</small>
+                                <small className="source">Rewards Tier are fixed and TVL fluctuations do not affect the daily yield.</small>
                                 <br />
 
-                                <small className="source">Disclaimer: Dividend payouts are fixed and the TVL fluctuations do not effect the daily yield like in traditional miners.</small>
+                                {/* <small className="source">Disclaimer: Dividend payouts are fixed and the TVL fluctuations do not effect the daily yield like in traditional miners.</small> */}
                             </Card>
-                            <Card data-aos="fade-down" data-aos-duration="800" className="p-3">
-                                <h3>UNSTAKE FEES</h3>
+                        </CardDeck>
 
-                                <table className="source" border="2">
-                                <tbody>
-                                    <tr>
-                                    <td className="font-weight-bold">Stake Length</td>
-                                    <td className="font-weight-bold">Unstake Fee</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Day 1 - 10</td>
-                                    <td>20%</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Day 10 - 20</td>
-                                    <td>18%</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Day 20 - 30</td>
-                                    <td>15%</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Day 30 - ∞</td>
-                                    <td>12%</td>
-                                    </tr>
-                                </tbody>
-                                </table>
-                                <br /><small className="source">Dividends earned are also paid out when unstakes take place.</small>
-                                <br /><small className="source">Volume in and out of the protocol help the platform thrive. Fees are diversified across different asset classes and diversification vehicles.</small>
-                            </Card>
-                            <Card data-aos="fade-left" data-aos-duration="800" className="p-3">
-                                <h3>STAKING</h3>
-                                <span className="source text-center pl-2 pb-2 pr-3">
-                                10% fee on intial stakes<br /><br />
-                                Stakes immediately start earning 1.5% daily<br /><br />
-                                Unstake at any time (earnings included)<br /><br />
-                                Unstake fees start at 20% and decrease to 12%<br /><br />
-                                10% fee on dividend collections<br /><br />
-                                No fees on compounds
-                                </span>
-                            </Card>
-                            </CardDeck>
-                        </Container>
-                        </div>
-                    </Parallax>
-                </TabPanel>
+                        {/* <Parallax strength={500}>
+                            <div>
+                            <Container className="pb-3 pt-3 calvino text-center">
+                                <CardDeck>
+                                <Card data-aos="fade-right" data-aos-duration="800" className="p-3">
+                                    <h3>DIVIDENDS</h3>
 
-                <TabPanel value={activeTab} selectedIndex={2}>
-                    <h4 className="pt-5 text-center text-white">(COMING SOON)</h4>
-                    <CardDeck className="p-5">
-                        
-                        <Card body className="text-center text-lightblue">
-                            <h4 className="calvino text-lightblue">LOTTERY</h4>
+                                    <table className="source" border="2">
+                                    <tbody>
+                                        <tr>
+                                        <td className="font-weight-bold">Level</td>
+                                        <td className="font-weight-bold">Stake Length</td>
+                                        <td className="font-weight-bold">Earnings</td>
+                                        </tr>
+                                        <tr>
+                                        <td>1</td>
+                                        <td>Day 1 - 20</td>
+                                        <td>1.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        <td>2</td>
+                                        <td>Day 20 - 30</td>
+                                        <td>2.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        <td>3</td>
+                                        <td>Day 30 - 40</td>
+                                        <td>3.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        <td>4</td>
+                                        <td>Day 40 - 50</td>
+                                        <td>4.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        <td>♛ 5 </td>
+                                        <td>Day 50 - ∞</td>
+                                        <td>5.5% daily</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                    <br />
+                                    <small className="source">Compounding and collecting earnings from dividends reset all stakes to level 1. Creating new stakes has no effect on existing stakes.</small>
+                                    <br />
 
-                            <Box component="div" className='p-2 pb-5'>
-                                <Grid
-                                container
-                                alignItems="center"
-                                justifyContent="space-between"
-                                >
-                                    <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        POT SIZE
-                                    </Typography>
-                                    <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        $0
-                                    </Typography>
-                                </Grid>
+                                    <small className="source">Disclaimer: Dividend payouts are fixed and the TVL fluctuations do not effect the daily yield like in traditional miners.</small>
+                                </Card>
+                                <Card data-aos="fade-down" data-aos-duration="800" className="p-3">
+                                    <h3>UNSTAKE FEES</h3>
 
-                                <Grid
-                                container
-                                alignItems="center"
-                                justifyContent="space-between"
-                                >
-                                    <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        TOTAL PLAYERS
-                                    </Typography>
-                                    <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        0
-                                    </Typography>
-                                </Grid>
+                                    <table className="source" border="2">
+                                    <tbody>
+                                        <tr>
+                                        <td className="font-weight-bold">Stake Length</td>
+                                        <td className="font-weight-bold">Unstake Fee</td>
+                                        </tr>
+                                        <tr>
+                                        <td>Day 1 - 10</td>
+                                        <td>20%</td>
+                                        </tr>
+                                        <tr>
+                                        <td>Day 10 - 20</td>
+                                        <td>18%</td>
+                                        </tr>
+                                        <tr>
+                                        <td>Day 20 - 30</td>
+                                        <td>15%</td>
+                                        </tr>
+                                        <tr>
+                                        <td>Day 30 - ∞</td>
+                                        <td>12%</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                    <br /><small className="source">Dividends earned are also paid out when unstakes take place.</small>
+                                    <br /><small className="source">Volume in and out of the protocol help the platform thrive. Fees are diversified across different asset classes and diversification vehicles.</small>
+                                </Card>
+                                <Card data-aos="fade-left" data-aos-duration="800" className="p-3">
+                                    <h3>STAKING</h3>
+                                    <span className="source text-center pl-2 pb-2 pr-3">
+                                    10% fee on intial stakes<br /><br />
+                                    Stakes immediately start earning 1.5% daily<br /><br />
+                                    Unstake at any time (earnings included)<br /><br />
+                                    Unstake fees start at 20% and decrease to 12%<br /><br />
+                                    10% fee on dividend collections<br /><br />
+                                    No fees on compounds
+                                    </span>
+                                </Card>
+                                </CardDeck>
+                            </Container>
+                            </div>
+                        </Parallax> */}
+                    </TabPanel>
 
-                                <Grid
-                                container
-                                alignItems="center"
-                                justifyContent="space-between"
-                                >
-                                    <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        TOTAL TICKETS
-                                    </Typography>
-                                    <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        0
-                                    </Typography>
-                                </Grid>
+                    <TabPanel value={activeTab} selectedIndex={2}>
+                        <h4 className="pt-5 text-center text-white">(COMING SOON)</h4>
+                        <CardDeck className="p-5">
+                            
+                            <Card body className="text-center text-lightblue">
+                                <h4 className="calvino text-lightblue">LOTTERY</h4>
 
-                                <Grid
-                                container
-                                alignItems="center"
-                                justifyContent="space-between"
-                                >
-                                    <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        MY TICKETS
-                                    </Typography>
-                                    <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        0
-                                    </Typography>
-                                </Grid>
+                                <Box component="div" className='p-2 pb-5'>
+                                    <Grid
+                                    container
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    >
+                                        <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            POT SIZE
+                                        </Typography>
+                                        <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            $0
+                                        </Typography>
+                                    </Grid>
 
-                                <Grid
-                                container
-                                alignItems="center"
-                                justifyContent="space-between"
-                                >
-                                    <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        PROBABILITY OF WINNING
-                                    </Typography>
-                                    <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        0
-                                    </Typography>
-                                </Grid>
+                                    <Grid
+                                    container
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    >
+                                        <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            TOTAL PLAYERS
+                                        </Typography>
+                                        <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            0
+                                        </Typography>
+                                    </Grid>
 
-                                <Grid
-                                container
-                                alignItems="center"
-                                justifyContent="space-between"
-                                >
-                                    <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        PREVIOUS WINNER
-                                    </Typography>
-                                    <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        0
-                                    </Typography>
-                                </Grid>
+                                    <Grid
+                                    container
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    >
+                                        <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            TOTAL TICKETS
+                                        </Typography>
+                                        <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            0
+                                        </Typography>
+                                    </Grid>
 
-                                <Grid
-                                container
-                                alignItems="center"
-                                justifyContent="space-between"
-                                >
-                                    <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        PREVIOUS POT SIZE
-                                    </Typography>
-                                    <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
-                                        0
-                                    </Typography>
-                                </Grid>
-                            </Box>
+                                    <Grid
+                                    container
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    >
+                                        <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            MY TICKETS
+                                        </Typography>
+                                        <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            0
+                                        </Typography>
+                                    </Grid>
 
-                            <Form>
-                                <FormGroup>
-                                    <InputGroup>
-                                        <Input
-                                            className="custom-input text-center source"
-                                            placeholder="ENTER TICKETS AMOUNT"
-                                            disabled
-                                        ></Input>
-                                    </InputGroup>
-                                </FormGroup>
-                            </Form>
+                                    <Grid
+                                    container
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    >
+                                        <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            PROBABILITY OF WINNING
+                                        </Typography>
+                                        <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            0
+                                        </Typography>
+                                    </Grid>
 
-                            <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>buy tickets</Button>
-                            <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>collect winnings</Button>
-                            <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>send to miner (100% bonus)</Button>
-                        </Card>
-                    </CardDeck>
-                </TabPanel>
+                                    <Grid
+                                    container
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    >
+                                        <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            PREVIOUS WINNER
+                                        </Typography>
+                                        <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            0
+                                        </Typography>
+                                    </Grid>
 
-                { activeTab !== 2 &&
-                <Container className="pt-3">
-                    <Card body>
-                        <h2 className="calvino text-center text-lightblue">EARNINGS CALCULATOR</h2>
-                        <CardDeck>
-                            <Card body className="text-center">
-                                <h3 className="calvino font-weight-bold text-lightblue">STAKING</h3>
+                                    <Grid
+                                    container
+                                    alignItems="center"
+                                    justifyContent="space-between"
+                                    >
+                                        <Typography style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            PREVIOUS POT SIZE
+                                        </Typography>
+                                        <Typography className="text-white" style={{fontFamily: 'Open Sans', fontSize: '16px', fontWeight: 'bold'}} gutterBottom>
+                                            0
+                                        </Typography>
+                                    </Grid>
+                                </Box>
+
                                 <Form>
                                     <FormGroup>
-                                        <Label className="source font-weight-bold text-lightblue">STAKE AMOUNT</Label>
                                         <InputGroup>
                                             <Input
                                                 className="custom-input text-center source"
-                                                placeholder="MINIMUM 50 BUSD"
-                                                // onChange={(e) => this.setCalcAmount(`${e.target.value}`)}
-                                                onChange={updateCalc}
+                                                placeholder="ENTER TICKETS AMOUNT"
+                                                disabled
                                             ></Input>
                                         </InputGroup>
                                     </FormGroup>
                                 </Form>
-                                <Label className="source font-weight-bold text-lightblue">DAYS STAKED</Label>
-                                <Col className="text-center">
-                                    <Box>
-                                        <Slider
-                                            defaultValue={50}
-                                            aria-label="Default"
-                                            valueLabelDisplay="auto"
-                                            color='primary'
-                                            onChange={(_, v) => calculate(v)} />
-                                    </Box>
-                                </Col>
-                            </Card>
-                            <Card body className="text-center">
-                                <h3 className="calvino font-weight-bold text-lightblue">EARNINGS</h3>
-                                <CardDeck>
-                                    <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                        <h3 className="calvino text-white">${calcTotalDividends}</h3>
-                                        <small className="source text-white">total dividends earned</small>
-                                    </Card>
-                                    <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                        <h3 className="calvino text-white">${initalStakeAfterFees}</h3>
-                                        <small className="source text-white">initial stake after fees</small>
-                                    </Card>
-                                </CardDeck>
-                                <CardDeck className="pt-3">
-                                    <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                        <h3 className="calvino text-white">{dailyPercent}%</h3>
-                                        <small className="source text-white">earning daily (%)</small>
-                                    </Card>
-                                    <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                                        <h3 className="calvino text-white">${dailyValue}</h3>
-                                        <small className="source text-white">earning daily ($)</small>
-                                    </Card>
-                                </CardDeck>
+
+                                <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>buy tickets</Button>
+                                <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>collect winnings</Button>
+                                <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>send to miner (100% bonus)</Button>
                             </Card>
                         </CardDeck>
-                    </Card>
+                    </TabPanel>
+
+                    { activeTab == 1 &&
+                    <Container className="pt-3">
+                        <Card body>
+                            <h2 className="calvino text-center text-lightblue">Earnings Calculator</h2>
+                            <CardDeck>
+                                <Card body className="text-center">
+                                    {/* <h3 className="calvino font-weight-bold text-lightblue">STAKING</h3> */}
+                                    <Form>
+                                        <FormGroup>
+                                            <Label className="source font-weight-bold text-lightblue">Stake Amount</Label>
+                                            <InputGroup>
+                                                <Input
+                                                    className="custom-input text-center source"
+                                                    placeholder="MINIMUM 50 BUSD"
+                                                    // onChange={(e) => this.setCalcAmount(`${e.target.value}`)}
+                                                    onChange={updateCalc}
+                                                ></Input>
+                                            </InputGroup>
+                                        </FormGroup>
+                                    </Form>
+                                    <Label className="source font-weight-bold text-lightblue">Days Staked</Label>
+                                    <Col className="text-center">
+                                        <Box>
+                                            <Slider
+                                                defaultValue={50}
+                                                aria-label="Default"
+                                                valueLabelDisplay="auto"
+                                                color='primary'
+                                                onChange={(_, v) => calculate(v)} />
+                                        </Box>
+                                    </Col>
+                                </Card>
+                                <Card body className="text-center">
+                                    {/* <h3 className="calvino font-weight-bold text-lightblue">EARNINGS</h3> */}
+                                    <CardDeck>
+                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+                                            <h3 className="calvino text-white">${calcTotalDividends}</h3>
+                                            <small className="source text-white">Total rewards earned</small>
+                                        </Card>
+                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+                                            <h3 className="calvino text-white">${initalStakeAfterFees}</h3>
+                                            <small className="source text-white">Initial stake after fees</small>
+                                        </Card>
+                                    </CardDeck>
+                                    <CardDeck className="pt-3">
+                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+                                            <h3 className="calvino text-white">{dailyPercent}%</h3>
+                                            <small className="source text-white">Earning daily (%)</small>
+                                        </Card>
+                                        <Card style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+                                            <h3 className="calvino text-white">${dailyValue}</h3>
+                                            <small className="source text-white">Earning daily ($)</small>
+                                        </Card>
+                                    </CardDeck>
+                                </Card>
+                            </CardDeck>
+                        </Card>
+                    </Container>
+                    }
+                    {/* <Container className="pt-5 text-center calvino text-lightblue">
+                        <Card body className="mb-3 p-1">
+                            <CardDeck className="custom-footer">
+                                <a href="https://paycheck-org.gitbook.io/busd-automine/" target="_blank" rel="noreferrer"> DOCS </a>
+                                <a href="https://twitter.com/PaycheckOrg" target="_blank" rel="noreferrer"> TWITTER </a>
+                                <a href="https://t.me/PaycheckOrg" target="_blank" rel="noreferrer"> TELEGRAM </a>
+                                <a href="https://bscscan.com/address/0x73634D388dAD52eC1BB9C61A41934c269D11f338" target="_blank" rel="noreferrer"> CONTRACT </a>
+                                <a href="/BUSDAutoMine.pdf" target="_blank" rel="noreferrer"> AUDIT </a>
+                            </CardDeck>
+                        </Card>
+                        <p style={{fontSize: '14px'}}>COPYRIGHT © 2022 THE PAYCHECK ORGANIZATION ALL RIGHTS RESERVED</p>
+                    </Container> */}
                 </Container>
-                }
-                <Container className="pt-5 text-center calvino text-lightblue">
-                    <Card body className="mb-3 p-1">
-                        <CardDeck className="custom-footer">
-                            <a href="https://paycheck-org.gitbook.io/busd-automine/" target="_blank" rel="noreferrer"> DOCS </a>
-                            <a href="https://twitter.com/PaycheckOrg" target="_blank" rel="noreferrer"> TWITTER </a>
-                            <a href="https://t.me/PaycheckOrg" target="_blank" rel="noreferrer"> TELEGRAM </a>
-                            <a href="https://bscscan.com/address/0x73634D388dAD52eC1BB9C61A41934c269D11f338" target="_blank" rel="noreferrer"> CONTRACT </a>
-                            <a href="/BUSDAutoMine.pdf" target="_blank" rel="noreferrer"> AUDIT </a>
-                        </CardDeck>
-                    </Card>
-                    <p style={{fontSize: '14px'}}>COPYRIGHT © 2022 THE PAYCHECK ORGANIZATION ALL RIGHTS RESERVED</p>
-                </Container>
-            </Container>
+            </div>
         </>
 
     )
