@@ -710,7 +710,7 @@ function WealthMountain() {
                         <CardDeck className="p-3">
                             <Card body className="text-center text-lightblue">
                                 <h4 className="calvino text-lightblue">Your Staked Value</h4>
-                                <h1 className="source font-weight-bold text-white">$<TotalStakedValue /></h1>
+                                <h3 className="source font-weight-bold text-white">$<TotalStakedValue /></h3>
                                 <UnstakeOptions />
                             </Card>
                             <Card body className="text-center text-lightblue">
@@ -729,11 +729,11 @@ function WealthMountain() {
                                         <Button className="custom-button source mt-3" outline onClick={withdrawDivs}>Withdraw</Button>
                                     </Col>
                                 </Row>
-                                <small className="pt-2 source">Note: Collecting will reset all stakes to 1.5% daily. Compound will add to your stakes while doing the same.</small>
+                                <small className="pt-2 source">Note: Withdrawing will reset all Daily Earning to 1.5%. Compound will add to your stakes while doing the same.</small>
                             </Card>
                         </CardDeck>
                         <CardDeck className="pl-3 pr-3 pb-3">
-                            <Card body className="text-center text-lightblue">
+                            {/* <Card body className="text-center text-lightblue">
                                 <h5 className="calvino text-lightblue">REFERRALS EARNED</h5>
                                 {refBonusLoading ? <></> :
                                     <>
@@ -746,11 +746,11 @@ function WealthMountain() {
                                         </Row>
                                     </>}
 
-                            </Card>
-                            <Card body className="text-center text-lightblue">
-                                <h5 className="calvino text-lightblue">REFERRAL LINK</h5>
-                                <h3 type="button" onClick={() => navigator.clipboard.writeText("https://busdautomine.org?ref=" + userWalletAddress)} className="referralButton source font-weight-bold"><FaCopy size="1.6em" className="pr-3" />COPY LINK</h3>
-                                <small className="source text-lightblue">Earn 10% when someone uses your referral link.</small>
+                            </Card> */}
+                            <Card body className="text-left text-lightblue">
+                                <h4 className="calvino text-lightblue">Your Referral Link</h4>
+                                <h7 type="button" onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.6em" className="pr-3" /></h7>
+                                <small className="source text-lightblue"><br/>Earn 12% of every buy when someone uses your referral link!</small>
                             </Card>
                         </CardDeck>
                         <CardDeck className="pt-2 pr-3 pl-3 pb-3">
