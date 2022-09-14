@@ -216,7 +216,7 @@ function WealthMountain() {
     }
     
     const onGroup = () => {
-        // setActiveTab(2);
+        setActiveTab(2);
     }
 
     const handleChange = (e, value) => {
@@ -959,7 +959,7 @@ function WealthMountain() {
                     </TabPanel>
 
                     <TabPanel value={activeTab} selectedIndex={2}>
-                        <h4 className="pt-5 text-center text-white">(COMING SOON)</h4>
+                        {/* <h4 className="pt-5 text-center text-white">(COMING SOON)</h4>
                         <CardDeck className="p-5">
                             
                             <Card body className="text-center text-lightblue">
@@ -1073,6 +1073,28 @@ function WealthMountain() {
                                 <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>buy tickets</Button>
                                 <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>collect winnings</Button>
                                 <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>send to miner (100% bonus)</Button>
+                            </Card>
+                        </CardDeck> */}
+                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'380px'}}>
+                            <Card body className="text-center text-lightblue">
+                                <h5 className="calvino text-lightblue text-left">REFERRALS EARNED</h5>
+                                {refBonusLoading ? <></> :
+                                    <>
+                                        <h4 className="source font-weight-bold text-white text-left">${referralAccrued}</h4>
+                                        <Row>
+                                            <Col>
+                                                <Button className="custom-button source mt-2" outline onClick={stakeRefBonus}>STAKE</Button>
+                                                <Button className="custom-button source mt-2" outline onClick={withdrawRefBonus}>COLLECT</Button>
+                                            </Col>
+                                        </Row>
+                                    </>}
+                            </Card>
+                        </CardDeck>
+                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'380px'}}>
+                            <Card body className="text-left text-lightblue">
+                                <h4 className="calvino text-lightblue">Your Referral Link</h4>
+                                <h7 type="button" onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.6em" className="pr-3" /></h7>
+                                <small className="source text-lightblue"><br/>Earn 12% of every buy when someone uses your referral link!</small>
                             </Card>
                         </CardDeck>
                     </TabPanel>
