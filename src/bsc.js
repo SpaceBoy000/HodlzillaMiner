@@ -15,6 +15,7 @@ import { Tabs, Tab, TabPanel } from "./components/tabs/tabs";
 import { FaCopy, FaWallet, FaUserShield, FaSearchDollar } from 'react-icons/fa';
 // import MenuIcon from '@mui/icons-material/Menu';
 import { BiMenu } from "react-icons/bi";
+import { MdClose } from "react-icons/md";
 import logoImg from "./assets/img/logos/logo.svg";
 import dashboardImg from "./assets/icons/dashboard.svg";
 import rockImg from "./assets/icons/rock.svg";
@@ -95,6 +96,7 @@ function WealthMountain() {
     const wealthContract = '0x38a3b427FC59f4feA8B0E6fF7DB862C6E04012CA';// '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
     const [refBonusLoading, setRefBonusLoading] = useState(false);
     const [connectButtonText, setConnectButtonText] = useState('CONNECT')
+    const [sidebar, setSidebar] = useState(false);
 
     const faqData = [
         {
@@ -638,13 +640,13 @@ function WealthMountain() {
                 </div>
                 <div className="header-tab" style={{display:'flex'}}>
                     <Typography className='hd-title'>
-                        $BUSD MINER
+                        $BUSD Miner
                     </Typography>
                     <Typography className='hd-title'>
-                        $BNB MINER
+                        $BNB Miner
                     </Typography>
                     <Typography className='hd-title'>
-                        $HODLZILLA MINER
+                        $Hodlzilla Miner
                     </Typography>
                 </div>
                 <Button
@@ -653,7 +655,55 @@ function WealthMountain() {
                     onClick={requestAccount}>
                     {connectButtonText}
                 </Button>
-                <BiMenu className='hamburgerIcon'/>
+                
+                { !sidebar ? <BiMenu className='hamburgerIcon' onClick={() => {setSidebar(true)}}/> 
+                : <MdClose className='icon close' onClick={() => {setSidebar(false)}}/>}
+
+                {sidebar && (
+                    <div className="sidebar">
+                        <div className="d-flex  flex-column justify-content-center align-items-center">
+                            <Link to="/" className='navItem' onClick={() => setSidebar(false)}>
+                                $BUSD Miner
+                            </Link>
+                            <Link to="/" className='navItem' onClick={() => setSidebar(false)}>
+                                $BNB Miner
+                            </Link>
+                            <Link to="/" className='navItem' onClick={() => setSidebar(false)}>
+                                $Hodlzilla Miner
+                            </Link>
+                        </div>
+                        <div className="social" style={{marginTop:'50px', padding:'30px 30px'}}>
+                            <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={telegramIcon} />
+                                </a>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={twitterIcon} />
+                                </a>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={redditIcon} />
+                                </a>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={youTubeIcon} />
+                                </a>
+                            </div>
+                            <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={facebookIcon} />
+                                </a>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={instagramIcon} />
+                                </a>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={discordIcon} />
+                                </a>
+                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                    <img src={mediumIcon} />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </Card>
 
             {/* <Container>
