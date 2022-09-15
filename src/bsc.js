@@ -15,10 +15,14 @@ import { Tabs, Tab, TabPanel } from "./components/tabs/tabs";
 import { FaCopy, FaWallet, FaUserShield, FaSearchDollar } from 'react-icons/fa';
 // import MenuIcon from '@mui/icons-material/Menu';
 import { BiMenu } from "react-icons/bi";
-import logoImg from "./assets/img/logos/logo.png";
-import vectorImg from "./assets/img/Vector.png";
-import minerImg from "./assets/img/miner.png";
-import groupImg from "./assets/img/group.png";
+import logoImg from "./assets/img/logos/logo.svg";
+import dashboardImg from "./assets/icons/dashboard.svg";
+import rockImg from "./assets/icons/rock.svg";
+import groupImg from "./assets/icons/group.svg";
+
+import plusIcon from "./assets/icons/plusIcon.svg";
+import minusIcon from "./assets/icons/minusIcon.svg";
+
 import lotteryBanner from "./assets/lottery_banner.gif";
 
 import {
@@ -42,6 +46,8 @@ import {
 import { ethers, Contract } from 'ethers';
 import { height } from '@mui/system';
 
+import { Accordion } from "react-bootstrap";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 AOS.init({ duration: 2000 });
 const TabsContainer = styled.div`
@@ -80,6 +86,27 @@ function WealthMountain() {
     const wealthContract = '0x38a3b427FC59f4feA8B0E6fF7DB862C6E04012CA';// '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
     const [refBonusLoading, setRefBonusLoading] = useState(false);
     const [connectButtonText, setConnectButtonText] = useState('CONNECT')
+
+    const faqData = [
+        {
+          title: `What is the Hodlzilla’s BUSD miner?`,
+          content: 
+            <p>
+                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
+                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
+                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+            </p>
+        },
+        {
+            title: `What is the Hodlzilla’s BUSD miner?`,
+            content: 
+              <p>
+                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
+                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
+                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+              </p>
+        },
+    ]
 
     // const [countdown, setCountdown] = useState({
     //     alive: true,
@@ -207,6 +234,10 @@ function WealthMountain() {
         };
         init();
     }, []);
+
+    const onClickFaq = (i) => {
+        console.log("Item: ", i);
+    }
 
     const onHandleDashboard = () => {
         setActiveTab(0);
@@ -629,11 +660,11 @@ function WealthMountain() {
                     </Button>
                     <div style={{display:'flex', justifyContent:'space-around'}}>
                         <div className="menu-item">
-                            <img src={vectorImg}/>
+                            <img src={dashboardImg}/>
                             <Typography className="menu-item-text" onClick={onHandleDashboard}>Dashboard</Typography>
                         </div>
                         <div className="menu-item">
-                            <img src={minerImg}/>
+                            <img src={rockImg}/>
                             <Typography className="menu-item-text" onClick={onHandleMiner}>Miner</Typography>
                         </div>
                         <div className="menu-item">
@@ -644,11 +675,11 @@ function WealthMountain() {
                 </Card>
                 <div className="menu">
                     <div className="menu-item">
-                        <img src={vectorImg}/>
+                        <img src={dashboardImg}/>
                         <Typography className="menu-item-text" onClick={onHandleDashboard}>Dashboard</Typography>
                     </div>
                     <div className="menu-item">
-                        <img src={minerImg}/>
+                        <img src={rockImg}/>
                         <Typography className="menu-item-text" onClick={onHandleMiner}>Miner</Typography>
                     </div>
                     <div className="menu-item">
@@ -716,6 +747,7 @@ function WealthMountain() {
                                 </Card>
                             </CardDeck>
                         </Container>
+                        
                     }
                     {/* <TabsContainer className="pt-3">
                         <Tabs selectedTab={activeTab} onChange={handleChange}>
@@ -822,7 +854,7 @@ function WealthMountain() {
                                                 className="custom-input text-center source"
                                                 placeholder="minimum of 50"
                                                 onChange={updateStakingAmount}
-                                            ></Input>
+                                            />
                                         </InputGroup>
                                         <Button onClick={approveButton} className="custom-button mt-4 source font-weight-bold">Approve</Button>
                                         <Button onClick={stakeAmount} className="custom-button mt-4 source font-weight-bold">Stake</Button>
@@ -843,43 +875,43 @@ function WealthMountain() {
                                     <Link className="text-lightblue" to="/faq">For further questions, please read our DOCS</Link>
                                 </small>
                             </Card> */}
-                            <Card data-aos="fade-right" data-aos-duration="800" className="p-3 text-center">
+                            <Card /*data-aos="fade-right" data-aos-duration="800"*/ className="p-3 text-center">
                                 <h4 className="calvino text-lightblue">Rewards Tier</h4>
 
-                                <table className="source" border="2" style={{fontSize:'14px', borderColor:'#313131'}}>
-                                <tbody>
-                                    <tr>
-                                    <td className="font-weight-bold">Tier</td>
-                                    <td className="font-weight-bold">Stake Length</td>
-                                    <td className="font-weight-bold">Earnings</td>
-                                    </tr>
-                                    <tr>
-                                    <td>1</td>
-                                    <td>Day 1 - 20</td>
-                                    <td>1.5% daily</td>
-                                    </tr>
-                                    <tr>
-                                    <td>2</td>
-                                    <td>Day 20 - 30</td>
-                                    <td>2.5% daily</td>
-                                    </tr>
-                                    <tr>
-                                    <td>3</td>
-                                    <td>Day 30 - 40</td>
-                                    <td>3.5% daily</td>
-                                    </tr>
-                                    <tr>
-                                    <td>4</td>
-                                    <td>Day 40 - 50</td>
-                                    <td>4.5% daily</td>
-                                    </tr>
-                                    <tr>
-                                    {/* <td>♛ 5 </td> */}
-                                    <td>5 </td>
-                                    <td>Day 50 - ∞</td>
-                                    <td>5.5% daily</td>
-                                    </tr>
-                                </tbody>
+                                <table className="source" border="2">
+                                    <tbody>
+                                        <tr>
+                                        <td className="font-weight-bold">Tier</td>
+                                        <td className="font-weight-bold">Stake Length</td>
+                                        <td className="font-weight-bold">Earnings</td>
+                                        </tr>
+                                        <tr>
+                                        <td>1</td>
+                                        <td>Day 1 - 20</td>
+                                        <td>1.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        <td>2</td>
+                                        <td>Day 20 - 30</td>
+                                        <td>2.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        <td>3</td>
+                                        <td>Day 30 - 40</td>
+                                        <td>3.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        <td>4</td>
+                                        <td>Day 40 - 50</td>
+                                        <td>4.5% daily</td>
+                                        </tr>
+                                        <tr>
+                                        {/* <td>♛ 5 </td> */}
+                                        <td>5 </td>
+                                        <td>Day 50 - ∞</td>
+                                        <td>5.5% daily</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                                 <br />
                                 <small className="source">Rewards Tier are fixed and TVL fluctuations do not affect the daily yield.</small>
@@ -1181,6 +1213,30 @@ function WealthMountain() {
                                     </Card>
                                 </CardDeck>
                             </Card>
+                            <div style={{marginTop:'50px'}}>
+                                <h4 className="calvino text-center text-lightblue">Frequently Asked Questions</h4>
+                                <Accordion>
+                                {faqData.map((item, index) => {
+                                    return (
+                                        // <Reveal key={index} className='onStep' keyframes={fadeInUp} delay={100 * index} duration={800}>
+                                                <Accordion.Item eventKey={{ index }} style={{background:"transparent", border:"none"}}>
+                                                    <Accordion.Header style={{color: 'white !important', margin: 'auto', display:'flex', justifyContent:'space-between'}}>
+                                                        <div className="faqheading">
+                                                            {item.title}
+                                                        </div>
+                                                        <img id='plus' src={plusIcon}/>
+                                                        <img id='minus' src={minusIcon}/>
+                                                    </Accordion.Header>
+                                                    <Accordion.Body className="amount">
+                                                        {item.content}
+                                                    </Accordion.Body>
+                                                </Accordion.Item>
+                                        // </Reveal>
+                                    )
+                                }
+                                )}
+                                </Accordion>
+                            </div>
                         </Container>
                     }
                     {/* <Container className="pt-5 text-center calvino text-lightblue">
