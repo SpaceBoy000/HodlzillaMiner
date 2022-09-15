@@ -106,6 +106,24 @@ function WealthMountain() {
                 Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
               </p>
         },
+        {
+            title: `What is the Hodlzilla’s BUSD miner?`,
+            content: 
+              <p>
+                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
+                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
+                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+              </p>
+        },
+        {
+            title: `What is the Hodlzilla’s BUSD miner?`,
+            content: 
+              <p>
+                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
+                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
+                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+              </p>
+        },
     ]
 
     // const [countdown, setCountdown] = useState({
@@ -730,7 +748,7 @@ function WealthMountain() {
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Daily Earnings</h6>
                                     <h5 className="source font-weight-bold text-white">
-                                        700
+                                        $700
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
