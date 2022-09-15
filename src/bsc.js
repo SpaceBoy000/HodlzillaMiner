@@ -13,7 +13,8 @@ import wealthMountainABI from './contracts/WealthMountainBSC.json';
 import styled from "styled-components";
 import { Tabs, Tab, TabPanel } from "./components/tabs/tabs";
 import { FaCopy, FaWallet, FaUserShield, FaSearchDollar } from 'react-icons/fa';
-
+// import MenuIcon from '@mui/icons-material/Menu';
+import { BiMenu } from "react-icons/bi";
 import logoImg from "./assets/img/logos/logo.png";
 import vectorImg from "./assets/img/Vector.png";
 import minerImg from "./assets/img/miner.png";
@@ -75,8 +76,8 @@ function WealthMountain() {
     const [userWalletAddress, setUserWalletAddress] = useState('none');
     const [userStablecoinBalance, setUserStablecoinBalance] = useState(0);
     const [stablecoinAllowanceAmount, setStablecoinAllowanceAmount] = useState(0);
-    const stableCoin = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
-    const wealthContract = '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
+    const stableCoin = '0xe98e93fde3a05bc703f307ee63be9507d1f48554';//'0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
+    const wealthContract = '0x38a3b427FC59f4feA8B0E6fF7DB862C6E04012CA';// '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
     const [refBonusLoading, setRefBonusLoading] = useState(false);
     const [connectButtonText, setConnectButtonText] = useState('CONNECT')
 
@@ -129,32 +130,12 @@ function WealthMountain() {
 
         // ❌ Check if Meta Mask Extension exists 
         if (window.ethereum) {
-            if (window.ethereum.chainId != "0x38") {
-                window.ethereum.request({
-                    method: "wallet_addEthereumChain",
-                    params: [{
-                        chainId: "0x38",
-                        rpcUrls: ["https://bsc-dataseed1.binance.org"],
-                        chainName: "BSC Mainnet",
-                        nativeCurrency: {
-                            name: "BNB",
-                            symbol: "BNB",
-                            decimals: 18
-                        },
-                        blockExplorerUrls: ["https://bscscan.com"]
-                    }]
-                }).then(() => {
-                    window.location.reload()
-                });
-            };
-            console.log('detected');
-
-            // if (window.ethereum.chainId != "0x61") {
+            // if (window.ethereum.chainId != "0x38") {
             //     window.ethereum.request({
             //         method: "wallet_addEthereumChain",
             //         params: [{
-            //             chainId: "0x61",
-            //             rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+            //             chainId: "0x38",
+            //             rpcUrls: ["https://bsc-dataseed1.binance.org"],
             //             chainName: "BSC Mainnet",
             //             nativeCurrency: {
             //                 name: "BNB",
@@ -168,6 +149,26 @@ function WealthMountain() {
             //     });
             // };
             // console.log('detected');
+
+            if (window.ethereum.chainId != "0x61") {
+                window.ethereum.request({
+                    method: "wallet_addEthereumChain",
+                    params: [{
+                        chainId: "0x61",
+                        rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+                        chainName: "BSC Mainnet",
+                        nativeCurrency: {
+                            name: "BNB",
+                            symbol: "BNB",
+                            decimals: 18
+                        },
+                        blockExplorerUrls: ["https://bscscan.com"]
+                    }]
+                }).then(() => {
+                    window.location.reload()
+                });
+            };
+            console.log('detected');
 
             try {
 
@@ -577,7 +578,7 @@ function WealthMountain() {
                         style={{ width: 'auto', height: '20px' }}
                     />
                 </div>
-                <div style={{display:'flex'}}>
+                <div className="header-tab" style={{display:'flex'}}>
                     <Typography className='hd-title'>
                         $BUSD MINER
                     </Typography>
@@ -589,12 +590,14 @@ function WealthMountain() {
                     </Typography>
                 </div>
                 <Button
-                    className='custom-button'
+                    className='custom-button connect-button'
                     style={{maxHeight: "43px", maxWidth: '230px'}}
                     onClick={requestAccount}>
                     {connectButtonText}
                 </Button>
+                <BiMenu className='hamburgerIcon'/>
             </Card>
+
             {/* <Container>
                 <Button
                     style={{background: 'transparent', border: 'none'}} 
@@ -617,6 +620,28 @@ function WealthMountain() {
                 }
             </Container> */}
             <div className="main_content">
+                <Card className="mobileBoard">
+                    <Button
+                        // className='custom-button'
+                        style={{maxHeight: "43px", minWidth: '300px', background: 'transparent', border: 'solid 1px #06EAAD', color: 'white', margin:'0px 0px 10px 0px !important'}}
+                        onClick={requestAccount}>
+                        {connectButtonText}
+                    </Button>
+                    <div style={{display:'flex', justifyContent:'space-around'}}>
+                        <div className="menu-item">
+                            <img src={vectorImg}/>
+                            <Typography className="menu-item-text" onClick={onHandleDashboard}>Dashboard</Typography>
+                        </div>
+                        <div className="menu-item">
+                            <img src={minerImg}/>
+                            <Typography className="menu-item-text" onClick={onHandleMiner}>Miner</Typography>
+                        </div>
+                        <div className="menu-item">
+                            <img src={groupImg}/>
+                            <Typography className="menu-item-text" onClick={onGroup}>Invite & Earn</Typography>
+                        </div>
+                    </div>
+                </Card>
                 <div className="menu">
                     <div className="menu-item">
                         <img src={vectorImg}/>

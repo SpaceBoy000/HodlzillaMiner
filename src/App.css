@@ -17207,6 +17207,7 @@ td.rdtYear:hover {
   position: fixed;
   z-index: 1;
   width: 100%;
+  align-items: center;
 }
 
 .hd-title {
@@ -17258,30 +17259,69 @@ td.rdtYear:hover {
 
 .content {
   padding-left: 250px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 
 .box-shadow {
   box-shadow: 0 -1px 2px #21FFA2; 
 }
 
+.hamburgerIcon {
+  display: none;
+}
+
+.mobileBoard {
+  display: none;
+}
 
 @media (max-width: 576px) {
+  .main_content {
+    display: unset;
+  }
+
   .custom-header {
-    /* display: flex; */
-    /* justify-content: space-between; */
-    flex-direction: column!important;
-
-
-    align-items: center;
-    /* padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem; */
   }
 
   .hd-title {
     font-size: 10px;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .content {
+    padding-left: 15px;
+    padding-bottom: 20px;
+  }
+
+  .connect-button {
+    display: none;
+  }
+
+  .header-tab {
+    display: none !important;
+  }
+
+  .hamburgerIcon {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobileBoard {
+    display: block;
+    text-align: center;
+    padding-top: 80px;
+  }
+
+  .menu-item {
+    display: unset;
+    /* text-align: center; */
+  }
+
+  .menu-item-text {
+    padding-left: 0px;
   }
 }
 
