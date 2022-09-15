@@ -23,6 +23,15 @@ import groupImg from "./assets/icons/group.svg";
 import plusIcon from "./assets/icons/plusIcon.svg";
 import minusIcon from "./assets/icons/minusIcon.svg";
 
+import telegramIcon from "./assets/socialIcons/Telegram.svg";
+import twitterIcon from "./assets/socialIcons/Twitter.svg";
+import redditIcon from "./assets/socialIcons/Reddit.svg";
+import youTubeIcon from "./assets/socialIcons/YouTube.svg";
+import facebookIcon from "./assets/socialIcons/Facebook.svg";
+import instagramIcon from "./assets/socialIcons/Instagram.svg";
+import discordIcon from "./assets/socialIcons/Discord.svg";
+import mediumIcon from "./assets/socialIcons/Medium.svg";
+
 import lotteryBanner from "./assets/lottery_banner.gif";
 
 import {
@@ -689,7 +698,7 @@ function WealthMountain() {
                             <img src={groupImg}/>
                             <Typography className="menu-item-text" onClick={onGroup}>Invite & Earn</Typography>
                         </div>
-                    </div>
+                    </div> 
                 </Card>
                 <div className="menu">
                     <div className="menu-item">
@@ -703,6 +712,37 @@ function WealthMountain() {
                     <div className="menu-item">
                         <img src={groupImg}/>
                         <Typography className="menu-item-text" onClick={onGroup}>Invite & Earn</Typography>
+                    </div>
+                    <div style={{flex: "1"}}/>
+                    <div className="social">
+                        <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={telegramIcon} />
+                            </a>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={twitterIcon} />
+                            </a>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={redditIcon} />
+                            </a>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={youTubeIcon} />
+                            </a>
+                        </div>
+                        <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={facebookIcon} />
+                            </a>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={instagramIcon} />
+                            </a>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={discordIcon} />
+                            </a>
+                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <img src={mediumIcon} />
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <Container className="pt-3 content">
