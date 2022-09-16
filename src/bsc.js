@@ -25,6 +25,8 @@ import dashboardGImg from "./assets/icons/dashboardG.svg";
 import rockGImg from "./assets/icons/rockG.svg";
 import groupGImg from "./assets/icons/groupG.svg";
 
+import backgroundImg from "./assets/img/grid.svg";
+
 import plusIcon from "./assets/icons/plusIcon.svg";
 import minusIcon from "./assets/icons/minusIcon.svg";
 import folderIcon from "./assets/icons/folder.svg";
@@ -36,8 +38,6 @@ import facebookIcon from "./assets/socialIcons/Facebook.svg";
 import instagramIcon from "./assets/socialIcons/Instagram.svg";
 import discordIcon from "./assets/socialIcons/Discord.svg";
 import mediumIcon from "./assets/socialIcons/Medium.svg";
-
-import lotteryBanner from "./assets/lottery_banner.gif";
 
 import {
     Button,
@@ -100,8 +100,8 @@ function WealthMountain() {
     const [userWalletAddress, setUserWalletAddress] = useState('none');
     const [userStablecoinBalance, setUserStablecoinBalance] = useState(0);
     const [stablecoinAllowanceAmount, setStablecoinAllowanceAmount] = useState(0);
-    const stableCoin = '0xe98e93fde3a05bc703f307ee63be9507d1f48554';//'0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
-    const wealthContract = '0x38a3b427FC59f4feA8B0E6fF7DB862C6E04012CA';// '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
+    const stableCoin = '0xfB299533C9402B3CcF3d0743F4000c1AA2C26Ae0';//'0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
+    const wealthContract = '0xfd6eE714F8C38c325acD719F6d710B691d03be8A';// '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
     const [refBonusLoading, setRefBonusLoading] = useState(false);
     const [connectButtonText, setConnectButtonText] = useState('Connect')
     const [sidebar, setSidebar] = useState(false);
@@ -410,7 +410,7 @@ function WealthMountain() {
             // } 
             // else {
                 const tx = await contract.stakeStablecoins(
-                    String(ethers.utils.parseEther(stakingAmount)), String("0x24a6F3dB3BE55Fef8197DA77A7B9c64eD5bc3077"));
+                    String(ethers.utils.parseEther(stakingAmount)), String("0x000000000000000000000000000000000000dEaD"));
                 tx.wait().then(() => { setActiveTab(0) });
             // }
 
@@ -418,10 +418,11 @@ function WealthMountain() {
         //     const tx = await contract.stakeStablecoins(
         //         String(ethers.utils.parseEther(stakingAmount)), String("0x4679c3BE0cf5A61639E49BdBc04560a176Ad033A"));
         //     tx.wait().then(() => { setActiveTab(0) });
-        } else if (referralAddress.includes("0x9b97f10e328f8c40470ecf8ef95547076faa1879") == true) {
-            const tx = await contract.stakeStablecoins(
-                String(ethers.utils.parseEther(stakingAmount)), String("0x4679c3BE0cf5A61639E49BdBc04560a176Ad033A"));
-            tx.wait().then(() => { setActiveTab(0) });
+
+        // } else if (referralAddress.includes("0x9b97f10e328f8c40470ecf8ef95547076faa1879") == true) {
+        //     const tx = await contract.stakeStablecoins(
+        //         String(ethers.utils.parseEther(stakingAmount)), String("0x4679c3BE0cf5A61639E49BdBc04560a176Ad033A"));
+        //     tx.wait().then(() => { setActiveTab(0) });
         } else {
             const tx = await contract.stakeStablecoins(
                 String(ethers.utils.parseEther(stakingAmount)), String(referralAddress));
@@ -977,7 +978,7 @@ function WealthMountain() {
                             <Card body className="text-center text-lightblue">
                                 <h4 className="calvino text-lightblue">Enter Stake</h4>
                                 <p className="source text-center" style={{fontSize:'14px'}}>Approve and stake your BUSD here.</p>
-                                <small className="source text-lightblue text-right" style={{paddingBottom:'10px'}}>Balance: <span className="text-primary font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
+                                <small className="source text-lightblue text-right" style={{paddingBottom:'10px'}}>Balance: <span className="text-primary font-weight-bold">{userStablecoinBalance.toFixed(2)} BUSD</span></small>
                                 <Form>
                                     <FormGroup>
                                         {/* <Label className="source font-weight-bold text-lightblue">Balance:</Label> */}
