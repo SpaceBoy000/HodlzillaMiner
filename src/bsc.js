@@ -21,6 +21,10 @@ import dashboardImg from "./assets/icons/dashboard.svg";
 import rockImg from "./assets/icons/rock.svg";
 import groupImg from "./assets/icons/group.svg";
 
+import dashboardGImg from "./assets/icons/dashboardG.svg";
+import rockGImg from "./assets/icons/rockG.svg";
+import groupGImg from "./assets/icons/groupG.svg";
+
 import plusIcon from "./assets/icons/plusIcon.svg";
 import minusIcon from "./assets/icons/minusIcon.svg";
 import folderIcon from "./assets/icons/folder.svg";
@@ -744,17 +748,29 @@ function WealthMountain() {
                         {connectButtonText}
                     </Button>
                     <div style={{display:'flex', justifyContent:'space-around'}}>
-                        <div className="menu-item" style={{color: activeTab == 0 ? 'green' : 'white'}}>
-                            <img src={dashboardImg}/>
-                            <Typography className="menu-item-text" onClick={onHandleDashboard}>Dashboard</Typography>
+                        <div className="menu-item" onClick={onHandleDashboard}>
+                            {
+                                activeTab == 0 ? <img src={dashboardGImg}/>
+                                :
+                                <img src={dashboardImg}/>
+                            }
+                            <Typography className="menu-item-text" style={{color: activeTab == 0 ? '#05EDAC' : 'white'}}>Dashboard</Typography>
                         </div>
-                        <div className="menu-item">
-                            <img src={rockImg}/>
-                            <Typography className="menu-item-text" onClick={onHandleMiner}>Miner</Typography>
+                        <div className="menu-item" onClick={onHandleMiner}>
+                            {
+                                activeTab == 1 ? <img src={rockGImg}/>
+                                :
+                                <img src={rockImg}/>
+                            }
+                            <Typography className="menu-item-text" style={{color: activeTab == 1 ? '#05EDAC' : 'white'}}>Miner</Typography>
                         </div>
-                        <div className="menu-item">
-                            <img src={groupImg}/>
-                            <Typography className="menu-item-text" onClick={onGroup}>Invite & Earn</Typography>
+                        <div className="menu-item" onClick={onGroup}>
+                            {
+                                activeTab == 2 ? <img src={groupGImg}/>
+                                :
+                                <img src={groupImg}/>
+                            }
+                            <Typography className="menu-item-text" style={{color: activeTab == 2 ? '#05EDAC' : 'white'}}>Invite & Earn</Typography>
                         </div>
                     </div> 
                 </Card>
