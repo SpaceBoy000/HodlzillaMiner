@@ -269,7 +269,7 @@ strong {
   font-weight: bolder; }
 
 small {
-  font-size: 80%; }
+  font-size: 12px; }
 
 sub,
 sup {
@@ -289,7 +289,7 @@ a {
   text-decoration: none;
   background-color: transparent; }
   a:hover {
-    color: #FFBB55;
+    color: #05EDAC;
     text-decoration: none; }
 
 a:not([href]):not([tabindex]) {
@@ -459,7 +459,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: inherit;
   font-weight: 400;
   line-height: 1.5;
-  color: #FFBB55; }
+  color: #05EDAC; }
 
 h1, .h1 {
   font-size: 2.5rem; }
@@ -511,7 +511,7 @@ hr {
 
 small,
 .small {
-  font-size: 80%;
+  font-size: 12px;
   font-weight: 400; }
 
 mark,
@@ -2558,8 +2558,8 @@ input[type="button"].btn-block {
   color: #525f7f;
   text-align: left;
   list-style: none;
-  background-color: #FFBB55;
-  /* background: linear-gradient(269.42deg, #CD8416 33.5%, #FFBB55 69.21%); */
+  background-color: #05EDAC;
+  /* background: linear-gradient(269.42deg, #CD8416 33.5%, #05EDAC 69.21%); */
   background-clip: padding-box;
   border: 0 solid rgba(0, 0, 0, 0.15);
   border-radius: 0.3rem;
@@ -10415,7 +10415,7 @@ button.bg-darker:focus {
   color: #fff !important; }
 
 .text-primary {
-  color: #5e72e4 !important; }
+  color: #05EDAC !important; }
 
 a.text-primary:hover, a.text-primary:focus {
   color: #233dd2 !important; }
@@ -11865,7 +11865,7 @@ a.text-lighter:hover, a.text-lighter:focus {
 
 .btn {
   position: relative;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   will-change: transform;
   letter-spacing: 0.025em;
   font-size: 16px; }
@@ -11873,7 +11873,8 @@ a.text-lighter:hover, a.text-lighter:focus {
     box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
     transform: translateY(-1px); }
   .btn:not(:last-child) {
-    margin-right: .5rem; }
+    margin-right: .5rem;
+    margin-left: .5rem; }
 
 .btn-group .btn,
 .input-group .btn {
@@ -17212,6 +17213,7 @@ td.rdtYear:hover {
   z-index: 1;
   width: 100%;
   align-items: center;
+  background: #0E1716;
 }
 
 .hd-title {
@@ -17398,11 +17400,18 @@ td.rdtYear:hover {
     display: block;
     text-align: center;
     padding-top: 80px;
+    background: black;
   }
 
   .menu-item {
     display: unset;
     /* text-align: center; */
+  }
+
+  .menu-item img {
+    background: #131314;
+    border-radius: 12px;
+    padding: 10px;
   }
 
   .menu-item-text {
@@ -17442,6 +17451,7 @@ td.rdtYear:hover {
   border-radius: 8px;
   border: none;
   color: white;
+  padding: 30px 10px;
 }
 
 .custom-input:focus {

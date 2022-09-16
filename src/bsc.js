@@ -23,7 +23,7 @@ import groupImg from "./assets/icons/group.svg";
 
 import plusIcon from "./assets/icons/plusIcon.svg";
 import minusIcon from "./assets/icons/minusIcon.svg";
-
+import folderIcon from "./assets/icons/folder.svg";
 import telegramIcon from "./assets/socialIcons/Telegram.svg";
 import twitterIcon from "./assets/socialIcons/Twitter.svg";
 import redditIcon from "./assets/socialIcons/Reddit.svg";
@@ -65,6 +65,10 @@ const TabsContainer = styled.div`
   padding: 2px;
 `;
 
+export function shorten(str) {
+    if (str.length < 10) return str;
+    return `${str.slice(0, 6)}...${str.slice(str.length - 4)}`;
+}
 
 function WealthMountain() {
     const [sliderValue, setSliderValue] = useState('50');
@@ -78,7 +82,7 @@ function WealthMountain() {
     const [stakingAmount, setStakingAmount] = useState("");
     const [calculatedDividends, setCalculatedDividends] = useState(0);
     const [contractBalance, setContractBalance] = useState("");
-    const [referralAccrued, setReferralAccrued] = useState("");
+    const [referralAccrued, setReferralAccrued] = useState(0);
     const [totalUsers, setTotalUsers] = useState("");
     // const [totalCompounds, setTotalCompounds] = useState("")
     // const [totalCollections, setTotalCollections] = useState("")
@@ -95,7 +99,7 @@ function WealthMountain() {
     const stableCoin = '0xe98e93fde3a05bc703f307ee63be9507d1f48554';//'0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
     const wealthContract = '0x38a3b427FC59f4feA8B0E6fF7DB862C6E04012CA';// '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
     const [refBonusLoading, setRefBonusLoading] = useState(false);
-    const [connectButtonText, setConnectButtonText] = useState('CONNECT')
+    const [connectButtonText, setConnectButtonText] = useState('Connect')
     const [sidebar, setSidebar] = useState(false);
 
     const faqData = [
@@ -234,7 +238,7 @@ function WealthMountain() {
 
                 setUserWalletAddress(accounts[0]);
                 if (userWalletAddress != 'none') {
-                    setConnectButtonText('CONNECTED')
+                    setConnectButtonText(shorten(accounts[0]));
                     recalculateInfo();
                 }
 
@@ -246,6 +250,13 @@ function WealthMountain() {
             alert('Meta Mask not detected');
         }
     }
+
+    // const disconnect = () => {
+    //     console.log("disconnected");
+    //     web3Modal.clearCachedProvider();
+    //     setUserWalletAddress(null);
+    // };
+
     useEffect(() => {
         const init = async () => {
             var provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -263,10 +274,6 @@ function WealthMountain() {
         };
         init();
     }, []);
-
-    const onClickFaq = (i) => {
-        console.log("Item: ", i);
-    }
 
     const onHandleDashboard = () => {
         setActiveTab(0);
@@ -731,12 +738,13 @@ function WealthMountain() {
                 <Card className="mobileBoard">
                     <Button
                         // className='custom-button'
-                        style={{maxHeight: "43px", minWidth: '300px', background: 'transparent', border: 'solid 1px #06EAAD', color: 'white', margin:'0px 0px 10px 0px !important'}}
+                        style={{maxHeight: "43px", minWidth: '300px', background: 'transparent', border: 'solid 1px #06EAAD', borderRadius:'12px', color: 'white', alignItems:'center'}}
                         onClick={requestAccount}>
+                        <img src={folderIcon} style={{paddingRight: '10px'}} height='16px'/>
                         {connectButtonText}
                     </Button>
                     <div style={{display:'flex', justifyContent:'space-around'}}>
-                        <div className="menu-item">
+                        <div className="menu-item" style={{color: activeTab == 0 ? 'green' : 'white'}}>
                             <img src={dashboardImg}/>
                             <Typography className="menu-item-text" onClick={onHandleDashboard}>Dashboard</Typography>
                         </div>
@@ -751,15 +759,15 @@ function WealthMountain() {
                     </div> 
                 </Card>
                 <div className="menu">
-                    <div className="menu-item">
+                    <div className="menu-item" style={{background: activeTab == 0 ? 'black' : 'transparent', borderRadius:'12px', borderLeft: activeTab == 0 ? 'solid green 12px' : 'none'}}>
                         <img src={dashboardImg}/>
                         <Typography className="menu-item-text" onClick={onHandleDashboard}>Dashboard</Typography>
                     </div>
-                    <div className="menu-item">
+                    <div className="menu-item" style={{background: activeTab == 1 ? 'black' : 'transparent', borderRadius:'12px', borderLeft: activeTab == 1 ? 'solid green 12px' : 'none'}}>
                         <img src={rockImg}/>
                         <Typography className="menu-item-text" onClick={onHandleMiner}>Miner</Typography>
                     </div>
-                    <div className="menu-item">
+                    <div className="menu-item" style={{background: activeTab == 2 ? 'black' : 'transparent', borderRadius:'12px', borderLeft: activeTab == 2 ? 'solid green 12px' : 'none'}}>
                         <img src={groupImg}/>
                         <Typography className="menu-item-text" onClick={onGroup}>Invite & Earn</Typography>
                     </div>
@@ -801,25 +809,25 @@ function WealthMountain() {
                             <CardDeck>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">TVL</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h5 className="source font-weight-bold">
                                         {Number(contractBalance) === 0 ? <>?</> : <>${Number(contractBalance).toFixed(0)}</>}
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
-                                    <h6 className="calvino text-lightblue">USERS</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h6 className="calvino text-lightblue">Users</h6>
+                                    <h5 className="source font-weight-bold">
                                         {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Daily Earnings</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h5 className="source font-weight-bold">
                                         $1,059
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Referral rewards</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h5 className="source font-weight-bold">
                                         0
                                     </h5>
                                 </Card>
@@ -831,25 +839,25 @@ function WealthMountain() {
                             <CardDeck>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Stake Value</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h5 className="source font-weight-bold">
                                         {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Daily Earnings</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h5 className="source font-weight-bold">
                                         $700
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Total Rewards</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h5 className="source font-weight-bold">
                                         $1,059
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Referral Rewards</h6>
-                                    <h5 className="source font-weight-bold text-white">
+                                    <h5 className="source font-weight-bold">
                                         $1,059
                                     </h5>
                                 </Card>
@@ -875,17 +883,17 @@ function WealthMountain() {
                         <CardDeck className="p-3">
                             <Card body className="text-center text-lightblue">
                                 <h4 className="calvino text-lightblue">Your Staked Value</h4>
-                                <h3 className="source font-weight-bold text-white">$<TotalStakedValue /></h3>
+                                <h3 className="source font-weight-bold">$<TotalStakedValue /></h3>
                                 <UnstakeOptions />
                             </Card>
                             <Card body className="text-center text-lightblue">
                                 <h4 className="calvino text-lightblue">Total Rewards</h4>
                                 <CardDeck>
                                     <Card style={{background: "transparent"}}>
-                                        <h4 className="source font-weight-bold text-white"><TotalEarnedPercent /></h4>
+                                        <h4 className="source font-weight-bold"><TotalEarnedPercent /></h4>
                                     </Card>
                                     <Card style={{background: "transparent"}}>
-                                        <h4 className="source font-weight-bold text-white">$<TotalEarnedValue /></h4>
+                                        <h4 className="source font-weight-bold">$<TotalEarnedValue /></h4>
                                     </Card>
                                 </CardDeck>
                                 <Row>
@@ -894,7 +902,7 @@ function WealthMountain() {
                                         <Button className="custom-button source mt-3" outline onClick={withdrawDivs}>Withdraw</Button>
                                     </Col>
                                 </Row>
-                                <small className="pt-2 source">Note: Withdrawing will reset all Daily Earning to 1.5%. Compound will add to your stakes while doing the same.</small>
+                                <small className="pt-4 source">Note: Withdrawing will reset all Daily Earning to 1.5%. Compound will add to your stakes while doing the same.</small>
                             </Card>
                         </CardDeck>
                         <CardDeck className="pl-3 pr-3 pb-3">
@@ -914,8 +922,8 @@ function WealthMountain() {
                             </Card> */}
                             <Card body className="text-left text-lightblue">
                                 <h4 className="calvino text-lightblue">Your Referral Link</h4>
-                                <h7 type="button" onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.6em" className="pr-3" /></h7>
-                                <small className="source text-lightblue"><br/>Earn 12% of every buy when someone uses your referral link!</small>
+                                <h7 type="button" style={{background:'white', color:'black', borderRadius:'12px', padding:'5px 10px'}} onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.8em" className="pr-3" /></h7>
+                                <small className="source text-lightblue"><br/><br/>Earn 12% of every buy when someone uses your referral link!<br/><br/></small>
                             </Card>
                         </CardDeck>
                         <CardDeck className="pt-2 pr-3 pl-3 pb-3">
@@ -953,7 +961,7 @@ function WealthMountain() {
                             <Card body className="text-center text-lightblue">
                                 <h4 className="calvino text-lightblue">Enter Stake</h4>
                                 <p className="source text-center" style={{fontSize:'14px'}}>Approve and stake your BUSD here.</p>
-                                <small className="source text-lightblue text-right">Balance: <span className="text-white font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
+                                <small className="source text-lightblue text-right" style={{paddingBottom:'10px'}}>Balance: <span className="text-primary font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
                                 <Form>
                                     <FormGroup>
                                         {/* <Label className="source font-weight-bold text-lightblue">Balance:</Label> */}
@@ -970,7 +978,7 @@ function WealthMountain() {
                                 </Form>
                                 <small className="source text-lightblue">Note: Stakes are not locked. You can <br /> unstake at any time.</small><br />
                                 {/* <small className="source text-lightblue text-left"><FaWallet size="1.7em" className="pr-2" />Your wallet: <span className="text-white font-weight-bold">{userStablecoinBalance.toFixed(2)} BUSD</span></small> */}
-                                <small className="source text-lightblue text-left"><FaUserShield size="1.7em" className="pr-2" />Approved amount: <span className="text-white font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
+                                <small className="source text-lightblue text-left"><FaUserShield size="1.7em" className="pr-2" />Approved amount: <span className="text-primary font-weight-bold">{stablecoinAllowanceAmount.toFixed(2)} BUSD</span></small>
                                 {/* <a className="source text-left text-underline text-lightblue" href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer"><small className="source text-lightblue text-left"><FaSearchDollar size="1.7em" className="pr-2" />Swap your tokens for BUSD here. </small></a> */}
                             </Card>
                             {/* <Card body className="source text-center">
@@ -1240,25 +1248,25 @@ function WealthMountain() {
                                 <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>send to miner (100% bonus)</Button>
                             </Card>
                         </CardDeck> */}
-                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'380px'}}>
+                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'381px'}}>
                             <Card body className="text-center text-lightblue">
-                                <h5 className="calvino text-lightblue text-left">REFERRALS EARNED</h5>
+                                <h5 className="calvino text-lightblue text-left">Refferals Earned</h5>
                                 {refBonusLoading ? <></> :
                                     <>
-                                        <h4 className="source font-weight-bold text-white text-left">${referralAccrued}</h4>
+                                        <h4 className="source font-weight-bold text-left">${referralAccrued}</h4>
                                         <Row>
                                             <Col>
-                                                <Button className="custom-button source mt-2" outline onClick={stakeRefBonus}>STAKE</Button>
-                                                <Button className="custom-button source mt-2" outline onClick={withdrawRefBonus}>COLLECT</Button>
+                                                <Button className="custom-button source mt-2" outline onClick={stakeRefBonus}>Compound</Button>
+                                                <Button className="custom-button source mt-2" outline onClick={withdrawRefBonus}>Withdraw</Button>
                                             </Col>
                                         </Row>
                                     </>}
                             </Card>
                         </CardDeck>
-                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'380px'}}>
+                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'381px'}}>
                             <Card body className="text-left text-lightblue">
-                                <h4 className="calvino text-lightblue">Your Referral Link</h4>
-                                <h7 type="button" onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.6em" className="pr-3" /></h7>
+                                <h5 className="calvino text-lightblue">Your Referral Link</h5>
+                                <h7 type="button" style={{background:'white', color:'black', borderRadius:'12px', padding:'5px 10px'}} onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.8em" className="pr-3" /></h7>
                                 <small className="source text-lightblue"><br/>Earn 12% of every buy when someone uses your referral link!</small>
                             </Card>
                         </CardDeck>
@@ -1284,8 +1292,8 @@ function WealthMountain() {
                                                 </InputGroup>
                                             </FormGroup>
                                         </Form>
-                                        <Label className="source font-weight-bold text-lightblue text-left">Days Staked</Label>
-                                        <Col className="text-center">
+                                        <Label className="source font-weight-bold text-lightblue text-left" style={{marginTop:'20px'}}>Days Staked</Label>
+                                        <Col className="text-center" style={{padding: '0px'}}>
                                             <Box>
                                                 <Slider
                                                     defaultValue={50}
@@ -1294,10 +1302,16 @@ function WealthMountain() {
                                                     color='primary'
                                                     onChange={(_, v) => calculate(v)} />
                                             </Box>
+                                            <div style={{display:'flex', justifyContent:'space-between'}}>
+                                                <span>0&nbsp;&nbsp;&nbsp;</span>
+                                                <span>50</span>
+                                                <span>100</span>
+                                            </div>
                                         </Col>
                                     </Card>
                                     <Card body className="text-center">
                                         {/* <h3 className="calvino font-weight-bold text-lightblue">EARNINGS</h3> */}
+                                        <Label className="source font-weight-bold text-lightblue text-left">Earnings</Label>
                                         <CardDeck>
                                             <Card style={{ boxShadow: '0 -1px 2px #9568E1', padding:'10px' }}>
                                                 <h6 className="calvino text-white">${calcTotalDividends}</h6>
