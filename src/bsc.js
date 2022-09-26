@@ -108,39 +108,52 @@ function WealthMountain() {
 
     const faqData = [
         {
-          title: `What is the Hodlzilla’s BUSD miner?`,
+          title: `What is the goal of HODLZILLA Miner?`,
           content: 
             <p>
-                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
-                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
-                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+                The goal of the platform is to construct a long-standing, user-friendly, and sustainable staking experience.
             </p>
         },
         {
-            title: `What is the Hodlzilla’s BUSD miner?`,
+            title: `How can I track my stakes?`,
             content: 
               <p>
-                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
-                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
-                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+                Your portfolio dashboard shows all the details and yields of your stake in real-time.
               </p>
         },
         {
-            title: `What is the Hodlzilla’s BUSD miner?`,
+            title: `Can I unstake at any point in time?`,
             content: 
               <p>
-                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
-                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
-                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+                Of course! You are free to unstake at any time.
               </p>
         },
         {
-            title: `What is the Hodlzilla’s BUSD miner?`,
+            title: `When collecting my referral earnings, will my stakes be reset?`,
             content: 
               <p>
-                The BUSD Crops Farmer is a decentralized application built on the Binance Smart Chain. The object of the game is to hire more farmers sooner and more often than other players. This in turn earns you more BUSD faster. These Farmers work for you tirelessly, giving you a daily average of 8% of your farmers' value.<br/><br/>
-                The daily percentage return depends on players' actions that are taken within the platform that impact the farmers's efficiency rate. The farming efficiency rate rises and falls as users buy Farmers, re-hire your earnings and sell your Crops for BUSD.<br/><br/>
-                Once Farmers are Bought, they cannot be sold, and the investment made to re-hire them (either through hire or re-hiring) cannot be taken back. However, once bought, Farmers will not stop producing yield.
+                No, it doesn’t affect your stakes in any way.
+              </p>
+        },
+        {
+            title: `Is there a limit to the number of people I can refer?`,
+            content: 
+              <p>
+                No, you are free to refer to as many people you can invite.
+              </p>
+        },
+        {
+            title: `Is there any tax in restaking?`,
+            content: 
+              <p>
+                No, there is 0% tax on restaking.
+              </p>
+        },
+        {
+            title: `Can the developers change rates and fees?`,
+            content: 
+              <p>
+                No. When a change needs to happen, a community vote is mandatory and new smart contracts would be required.
               </p>
         },
     ]
@@ -915,11 +928,11 @@ function WealthMountain() {
                                 </CardDeck>
                                 <Row>
                                     <Col>
-                                        <Button className="custom-button source mt-3" outline onClick={compound}>compound</Button>
+                                        <Button className="custom-button source mt-3" outline onClick={compound}>Reinvest</Button>
                                         <Button className="custom-button source mt-3" outline onClick={withdrawDivs}>Withdraw</Button>
                                     </Col>
                                 </Row>
-                                <small className="pt-4 source">Note: Withdrawing will reset all Daily Earning to 1.5%. Compound will add to your stakes while doing the same.</small>
+                                <small className="pt-4 source">Note: Withdrawing will reset all Daily Earning to 1.5%. Reinvest will add to your stakes while doing the same.</small>
                             </Card>
                         </CardDeck>
                         <CardDeck className="pl-3 pr-3 pb-3">
@@ -1273,7 +1286,7 @@ function WealthMountain() {
                                         <h4 className="source font-weight-bold text-left">${referralAccrued}</h4>
                                         <Row>
                                             <Col>
-                                                <Button className="custom-button source mt-2" outline onClick={stakeRefBonus}>Compound</Button>
+                                                <Button className="custom-button source mt-2" outline onClick={stakeRefBonus}>Reinvest</Button>
                                                 <Button className="custom-button source mt-2" outline onClick={withdrawRefBonus}>Withdraw</Button>
                                             </Col>
                                         </Row>

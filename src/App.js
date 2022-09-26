@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import './App.css';
 
 import BSC from './bsc';
+import LANDING_PAGE from "./landing";
 
 AOS.init({ duration: 2000 });
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<BSC />} />
+          <Route path='/' element={<LANDING_PAGE />} />
           <Route path='/binance' element={<BSC />} />
         </Routes>
       </Router>
