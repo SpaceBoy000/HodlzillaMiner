@@ -120,6 +120,18 @@ function WealthMountain() {
               <p>
                 Your portfolio dashboard shows all the details and yields of your stake in real-time.
               </p>
+        },{
+            title: `When do I start earning?`,
+            content: 
+              <p>
+                You start earning rewards immediately. Please refer to our Rewards table for corresponding rates.
+              </p>
+        },{
+            title: `How much is the fee for staking?`,
+            content: 
+              <p>
+                There is a 10% fee for all initial stakes. Unstaking fees vary depending on the stake length.
+              </p>
         },
         {
             title: `Can I unstake at any point in time?`,
@@ -133,6 +145,20 @@ function WealthMountain() {
             content: 
               <p>
                 No, it doesn’t affect your stakes in any way.
+              </p>
+        },
+        {
+            title: `When I restake, will my reward tier be reset?`,
+            content: 
+              <p>
+                Yes, your rewards tier will be back to Tier 1 once rewards are collected.
+              </p>
+        },
+        {
+            title: `What is the incentive for referrals?`,
+            content: 
+              <p>
+                Referral incentives are 8% of the referral.
               </p>
         },
         {
@@ -150,10 +176,10 @@ function WealthMountain() {
               </p>
         },
         {
-            title: `Can the developers change rates and fees?`,
+            title: `What is your recommended strategy?`,
             content: 
               <p>
-                No. When a change needs to happen, a community vote is mandatory and new smart contracts would be required.
+                We recommend restaking weekly until you reach your desired amount for continuous staking. This to fully maximize the 0% tax imposed on restaking and to fully maximize your initial funds for higher returns.
               </p>
         },
     ]
@@ -368,34 +394,34 @@ function WealthMountain() {
     function calculate(v) {
         setSliderValue(v)
         if (Number(sliderValue) <= "20") {
-            const totalReturn = (initalStakeAfterFees * 0.015) * sliderValue
+            const totalReturn = (initalStakeAfterFees * 0.01) * sliderValue
             setCalcTotalDividends(totalReturn.toFixed(2));
-            setDailyPercent(1.5);
-            setDailyValue(Number(initalStakeAfterFees * .015).toFixed(2))
+            setDailyPercent(1);
+            setDailyValue(Number(initalStakeAfterFees * .01).toFixed(2))
         }
         else if ("20" < Number(sliderValue) && Number(sliderValue) <= "30") {
-            const totalReturn = (initalStakeAfterFees * 0.025) * sliderValue
+            const totalReturn = (initalStakeAfterFees * 0.02) * sliderValue
             setCalcTotalDividends(totalReturn.toFixed(2));
-            setDailyPercent(2.5);
-            setDailyValue(Number(initalStakeAfterFees * .025).toFixed(2))
+            setDailyPercent(2);
+            setDailyValue(Number(initalStakeAfterFees * .02).toFixed(2))
         }
         else if ("30" < Number(sliderValue) && Number(sliderValue) <= "40") {
-            const totalReturn = (initalStakeAfterFees * 0.035) * sliderValue
+            const totalReturn = (initalStakeAfterFees * 0.03) * sliderValue
             setCalcTotalDividends(totalReturn.toFixed(2));
-            setDailyPercent(3.5);
-            setDailyValue(Number(initalStakeAfterFees * .035).toFixed(2))
+            setDailyPercent(3);
+            setDailyValue(Number(initalStakeAfterFees * .03).toFixed(2))
         }
         else if ("40" < Number(sliderValue) && Number(sliderValue) <= "50") {
-            const totalReturn = (initalStakeAfterFees * 0.045) * sliderValue
+            const totalReturn = (initalStakeAfterFees * 0.04) * sliderValue
             setCalcTotalDividends(totalReturn.toFixed(2));
-            setDailyPercent(4.5);
+            setDailyPercent(4);
             setDailyValue(Number(initalStakeAfterFees * .04).toFixed(2))
         }
         else if ("50" <= Number(sliderValue)) {
-            const totalReturn = (initalStakeAfterFees * 0.055) * sliderValue
+            const totalReturn = (initalStakeAfterFees * 0.05) * sliderValue
             setCalcTotalDividends(totalReturn.toFixed(2));
-            setDailyPercent(5.5);
-            setDailyValue(Number(initalStakeAfterFees * .055).toFixed(2))
+            setDailyPercent(5);
+            setDailyValue(Number(initalStakeAfterFees * .05).toFixed(2))
         }
     }
     async function approveButton() {
@@ -932,7 +958,7 @@ function WealthMountain() {
                                         <Button className="custom-button source mt-3" outline onClick={withdrawDivs}>Withdraw</Button>
                                     </Col>
                                 </Row>
-                                <small className="pt-4 source">Note: Withdrawing will reset all Daily Earning to 1.5%. Reinvest will add to your stakes while doing the same.</small>
+                                <small className="pt-4 source">Note: Withdrawing will reset all Daily Earning to 1%. Reinvest will add to your stakes while doing the same.</small>
                             </Card>
                         </CardDeck>
                         <CardDeck className="pl-3 pr-3 pb-3">
@@ -1034,28 +1060,28 @@ function WealthMountain() {
                                         <tr>
                                         <td>1</td>
                                         <td>Day 1 - 20</td>
-                                        <td>1.5% daily</td>
+                                        <td>1% daily</td>
                                         </tr>
                                         <tr>
                                         <td>2</td>
                                         <td>Day 20 - 30</td>
-                                        <td>2.5% daily</td>
+                                        <td>2% daily</td>
                                         </tr>
                                         <tr>
                                         <td>3</td>
                                         <td>Day 30 - 40</td>
-                                        <td>3.5% daily</td>
+                                        <td>3% daily</td>
                                         </tr>
                                         <tr>
                                         <td>4</td>
                                         <td>Day 40 - 50</td>
-                                        <td>4.5% daily</td>
+                                        <td>4% daily</td>
                                         </tr>
                                         <tr>
                                         {/* <td>♛ 5 </td> */}
                                         <td>5 </td>
                                         <td>Day 50 - ∞</td>
-                                        <td>5.5% daily</td>
+                                        <td>5% daily</td>
                                         </tr>
                                     </tbody>
                                 </table>
