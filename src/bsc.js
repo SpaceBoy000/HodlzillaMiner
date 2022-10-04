@@ -725,30 +725,30 @@ function WealthMountain() {
                         </div>
                         <div className="social" style={{marginTop:'50px', padding:'30px 30px'}}>
                             <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://t.me/+YeGNX_t31lo3ZWQ1" target="_blank" alt="telegram">
                                     <img src={telegramIcon} />
                                 </a>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://twitter.com/hodlzilla_web3" target="_blank" alt="twitter">
                                     <img src={twitterIcon} />
                                 </a>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://www.reddit.com/r/Hodlzilla_Web3" target="_blank" alt="reddit">
                                     <img src={redditIcon} />
                                 </a>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://www.youtube.com/channel/UCfFRdVQfc_rmNZ3T_35oQUA" target="_blank" alt="youtube">
                                     <img src={youTubeIcon} />
                                 </a>
                             </div>
                             <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://www.facebook.com/hodlzilla.web3" target="_blank" alt="facebook">
                                     <img src={facebookIcon} />
                                 </a>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://www.instagram.com/hodlzilla.web3/" target="_blank" alt="instagram">
                                     <img src={instagramIcon} />
                                 </a>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://discord.gg/tB4buEUeet" target="_blank" alt="discord">
                                     <img src={discordIcon} />
                                 </a>
-                                <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                                <a href="https://medium.com/@hodlzilla" target="_blank" alt="medium">
                                     <img src={mediumIcon} />
                                 </a>
                             </div>
@@ -830,30 +830,30 @@ function WealthMountain() {
                     <div style={{flex: "1"}}/>
                     <div className="social">
                         <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://t.me/+YeGNX_t31lo3ZWQ1" target="_blank" alt="telegram">
                                 <img src={telegramIcon} />
                             </a>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://twitter.com/hodlzilla_web3" target="_blank" alt="twitter">
                                 <img src={twitterIcon} />
                             </a>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://www.reddit.com/r/Hodlzilla_Web3" target="_blank" alt="reddit">
                                 <img src={redditIcon} />
                             </a>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://www.youtube.com/channel/UCfFRdVQfc_rmNZ3T_35oQUA" target="_blank" alt="youtube">
                                 <img src={youTubeIcon} />
                             </a>
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-around', padding:'10px'}}>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://www.facebook.com/hodlzilla.web3" target="_blank" alt="facebook">
                                 <img src={facebookIcon} />
                             </a>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://www.instagram.com/hodlzilla.web3/" target="_blank" alt="instagram">
                                 <img src={instagramIcon} />
                             </a>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://discord.gg/tB4buEUeet" target="_blank" alt="discord">
                                 <img src={discordIcon} />
                             </a>
-                            <a href="https://t.me/cryptospaceboy00" target="_blank" alt="telegram">
+                            <a href="https://medium.com/@hodlzilla" target="_blank" alt="medium">
                                 <img src={mediumIcon} />
                             </a>
                         </div>
@@ -883,9 +883,7 @@ function WealthMountain() {
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Referral rewards</h6>
-                                    <h5 className="source font-weight-bold">
-                                        0
-                                    </h5>
+                                    <h5 className="source font-weight-bold">${referralAccrued}</h5>
                                 </Card>
                             </CardDeck>
                         </Container>
@@ -896,7 +894,7 @@ function WealthMountain() {
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Stake Value</h6>
                                     <h5 className="source font-weight-bold">
-                                        {Number(totalUsers) === 0 ? <>?</> : <>{Number(totalUsers)}</>}
+                                        $<TotalStakedValue />
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
@@ -907,15 +905,11 @@ function WealthMountain() {
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Total Rewards</h6>
-                                    <h5 className="source font-weight-bold">
-                                        $1,059
-                                    </h5>
+                                    <h5 className="source font-weight-bold">$<TotalEarnedValue /></h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Referral Rewards</h6>
-                                    <h5 className="source font-weight-bold">
-                                        $1,059
-                                    </h5>
+                                    <h5 className="source font-weight-bold">${referralAccrued}</h5>
                                 </Card>
                             </CardDeck>
                         </Container>
@@ -979,7 +973,7 @@ function WealthMountain() {
                             <Card body className="text-left text-lightblue">
                                 <h4 className="calvino text-lightblue">Your Referral Link</h4>
                                 <h7 type="button" style={{background:'white', color:'black', borderRadius:'12px', padding:'5px 10px'}} onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.8em" className="pr-3" /></h7>
-                                <small className="source text-lightblue"><br/><br/>Earn 12% of every buy when someone uses your referral link!<br/><br/></small>
+                                <small className="source text-lightblue"><br/><br/>Earn 8% of every buy when someone uses your referral link!<br/><br/></small>
                             </Card>
                         </CardDeck>
                         <CardDeck className="pt-2 pr-3 pl-3 pb-3">
@@ -1304,8 +1298,8 @@ function WealthMountain() {
                                 <Button className="custom-button source mt-3" style={{width: '100%'}} outline onClick={()=>{}} disabled>send to miner (100% bonus)</Button>
                             </Card>
                         </CardDeck> */}
-                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'381px'}}>
-                            <Card body className="text-center text-lightblue">
+                        <CardDeck className="pl-3 pr-3 pb-3 refCard">
+                            <Card body className="text-center text-lightblue refCardbody">
                                 <h5 className="calvino text-lightblue text-left">Refferals Earned</h5>
                                 {refBonusLoading ? <></> :
                                     <>
@@ -1319,11 +1313,11 @@ function WealthMountain() {
                                     </>}
                             </Card>
                         </CardDeck>
-                        <CardDeck className="pl-3 pr-3 pb-3" style={{alignSelf:'center', maxWidth:'381px'}}>
-                            <Card body className="text-left text-lightblue">
+                        <CardDeck className="pl-3 pr-3 pb-3 refCard">
+                            <Card body className="text-left text-lightblue refCardbody">
                                 <h5 className="calvino text-lightblue">Your Referral Link</h5>
                                 <h7 type="button" style={{background:'white', color:'black', borderRadius:'12px', padding:'5px 10px'}} onClick={() => navigator.clipboard.writeText("https://hodlzillaminer.com?ref=" + userWalletAddress)} className="referralButton source font-weight-bold">{ "https://hodlzillaminer.com?ref=" + userWalletAddress } &nbsp; <FaCopy size="1.8em" className="pr-3" /></h7>
-                                <small className="source text-lightblue"><br/>Earn 12% of every buy when someone uses your referral link!</small>
+                                <small className="source text-lightblue"><br/>Earn 8% of every buy when someone uses your referral link!</small>
                             </Card>
                         </CardDeck>
                     </TabPanel>
