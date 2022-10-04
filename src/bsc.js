@@ -294,12 +294,6 @@ function WealthMountain() {
         }
     }
 
-    // const disconnect = () => {
-    //     console.log("disconnected");
-    //     web3Modal.clearCachedProvider();
-    //     setUserWalletAddress(null);
-    // };
-
     useEffect(() => {
         const init = async () => {
             var provider = new ethers.providers.Web3Provider(window.ethereum)
