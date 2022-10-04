@@ -522,6 +522,30 @@ function WealthMountain() {
         }
         return (<>{total.toFixed(2)}</>)
     }
+    function DailyEarn() {
+        var daily = 0;
+        for (var i =0; i < userInfo.length; i++) {
+            var depositTime = Number(userInfo[i].depoTime);
+            const now = Date.now() / 1000;
+            var period = (now - depositTime) / 3600 / 24;
+            var percent = 0;
+            if (period >= 50) {
+                percent = 5;
+            } else if (period >= 40) {
+                percent = 4;
+            } else if (period >= 30) {
+                percent = 3;
+            } else if (period >= 20) {
+                percent = 2;
+            } else {
+                percent = 1;
+            }
+
+            console.log("xxxxxxxxxxxxxx: %", percent);
+            daily += (Number(ethers.utils.formatEther(userInfo[i].amt)) * percent / 100);
+        }
+        return (<>{daily.toFixed(2)}</>)
+    }
     function TotalEarnedValue() {
         var value = calculatedDividends;
 
@@ -878,7 +902,7 @@ function WealthMountain() {
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Daily Earnings</h6>
                                     <h5 className="source font-weight-bold">
-                                        $1,059
+                                        $<DailyEarn/>
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
@@ -900,7 +924,7 @@ function WealthMountain() {
                                 <Card body className="text-center text-lightblue box-shadow">
                                     <h6 className="calvino text-lightblue">Daily Earnings</h6>
                                     <h5 className="source font-weight-bold">
-                                        $700
+                                        $<DailyEarn/>
                                     </h5>
                                 </Card>
                                 <Card body className="text-center text-lightblue box-shadow">
