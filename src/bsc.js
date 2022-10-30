@@ -436,26 +436,9 @@ function WealthMountain() {
         const ref = window.location.search;
         const referralAddress = String(ref.replace('?ref=', ''))
         if (referralAddress == 'null' || referralAddress.includes("0x") == false) {
-            // if (Number(stakingAmount) > Number(1000)) {
-            //     const tx = await contract.stakeStablecoins(
-            //         String(ethers.utils.parseEther(stakingAmount)), String("0x4679c3BE0cf5A61639E49BdBc04560a176Ad033A"));
-            //     tx.wait().then(() => { setActiveTab(0) });
-            // } 
-            // else {
-                const tx = await contract.stakeStablecoins(
-                    String(ethers.utils.parseEther(stakingAmount)), String("0x000000000000000000000000000000000000dEaD"));
-                tx.wait().then(() => { setActiveTab(0) });
-            // }
-
-        // } else if (Number(stakingAmount) >= Number(1000)) {
-        //     const tx = await contract.stakeStablecoins(
-        //         String(ethers.utils.parseEther(stakingAmount)), String("0x4679c3BE0cf5A61639E49BdBc04560a176Ad033A"));
-        //     tx.wait().then(() => { setActiveTab(0) });
-
-        // } else if (referralAddress.includes("0x9b97f10e328f8c40470ecf8ef95547076faa1879") == true) {
-        //     const tx = await contract.stakeStablecoins(
-        //         String(ethers.utils.parseEther(stakingAmount)), String("0x4679c3BE0cf5A61639E49BdBc04560a176Ad033A"));
-        //     tx.wait().then(() => { setActiveTab(0) });
+            const tx = await contract.stakeStablecoins(
+                String(ethers.utils.parseEther(stakingAmount)), String("0x000000000000000000000000000000000000dEaD"));
+            tx.wait().then(() => { setActiveTab(0) });
         } else {
             const tx = await contract.stakeStablecoins(
                 String(ethers.utils.parseEther(stakingAmount)), String(referralAddress));
@@ -535,7 +518,6 @@ function WealthMountain() {
                 percent = 1;
             }
 
-            console.log("xxxxxxxxxxxxxx: %", percent);
             daily += (Number(ethers.utils.formatEther(userInfo[i].amt)) * percent / 100);
         }
         return (<>{daily.toFixed(2)}</>)
