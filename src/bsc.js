@@ -100,8 +100,8 @@ function WealthMountain() {
     const [userWalletAddress, setUserWalletAddress] = useState('none');
     const [userStablecoinBalance, setUserStablecoinBalance] = useState(0);
     const [stablecoinAllowanceAmount, setStablecoinAllowanceAmount] = useState(0);
-    const stableCoin = '0xfB299533C9402B3CcF3d0743F4000c1AA2C26Ae0';//'0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
-    const wealthContract = '0xfd6eE714F8C38c325acD719F6d710B691d03be8A';// '0x73634D388dAD52eC1BB9C61A41934c269D11f338'
+    const stableCoin = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56'; //'0xfB299533C9402B3CcF3d0743F4000c1AA2C26Ae0';
+    const wealthContract = '0xfB299533C9402B3CcF3d0743F4000c1AA2C26Ae0'; // '0xfd6eE714F8C38c325acD719F6d710B691d03be8A'
     const [refBonusLoading, setRefBonusLoading] = useState(false);
     const [connectButtonText, setConnectButtonText] = useState('Connect')
     const [sidebar, setSidebar] = useState(false);
@@ -233,32 +233,12 @@ function WealthMountain() {
 
         // ❌ Check if Meta Mask Extension exists 
         if (window.ethereum) {
-            // if (window.ethereum.chainId != "0x38") {
-            //     window.ethereum.request({
-            //         method: "wallet_addEthereumChain",
-            //         params: [{
-            //             chainId: "0x38",
-            //             rpcUrls: ["https://bsc-dataseed1.binance.org"],
-            //             chainName: "BSC Mainnet",
-            //             nativeCurrency: {
-            //                 name: "BNB",
-            //                 symbol: "BNB",
-            //                 decimals: 18
-            //             },
-            //             blockExplorerUrls: ["https://bscscan.com"]
-            //         }]
-            //     }).then(() => {
-            //         window.location.reload()
-            //     });
-            // };
-            // console.log('detected');
-
-            if (window.ethereum.chainId != "0x61") {
+            if (window.ethereum.chainId != "0x38") {
                 window.ethereum.request({
                     method: "wallet_addEthereumChain",
                     params: [{
-                        chainId: "0x61",
-                        rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+                        chainId: "0x38",
+                        rpcUrls: ["https://bsc-dataseed1.binance.org"],
                         chainName: "BSC Mainnet",
                         nativeCurrency: {
                             name: "BNB",
@@ -271,6 +251,26 @@ function WealthMountain() {
                     window.location.reload()
                 });
             };
+            console.log('detected');
+
+            // if (window.ethereum.chainId != "0x61") {
+            //     window.ethereum.request({
+            //         method: "wallet_addEthereumChain",
+            //         params: [{
+            //             chainId: "0x61",
+            //             rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+            //             chainName: "BSC Mainnet",
+            //             nativeCurrency: {
+            //                 name: "BNB",
+            //                 symbol: "BNB",
+            //                 decimals: 18
+            //             },
+            //             blockExplorerUrls: ["https://bscscan.com"]
+            //         }]
+            //     }).then(() => {
+            //         window.location.reload()
+            //     });
+            // };
             console.log('detected');
 
             try {
